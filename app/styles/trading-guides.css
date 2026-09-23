@@ -1,0 +1,143 @@
+﻿@layer components {
+.funding-logo-rail { display: flex; justify-content: space-between; align-items: center; gap: 36px; padding-block: 34px; border-bottom: 1px solid var(--line); }
+.funding-logo-rail img[alt='Apple Pay'], .funding-logo-rail img[alt='Bank wire'] { background: #fff; border-radius: 8px; padding: 6px; }
+.funding-logo-rail img { width: 88px; height: 40px; object-fit: contain; }
+.funding-controls { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
+.funding-controls .account-selector { margin: 0; }
+.funding-filters { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.funding-filters button { font-size: 13px; padding: 10px 0; border-bottom: 2px solid transparent; color: var(--ink-3); }
+.funding-filters button[aria-pressed='true'] { color: var(--accent); border-color: var(--accent); }
+.funding-status { margin: 24px 0 18px; }
+.funding-table-wrap { border-block: 1px solid var(--line); max-height: 660px; overflow: auto; }
+.funding-table { width: 100%; border-collapse: separate; border-spacing: 0; text-align: left; font-size: 14px; }
+.funding-table thead th { position: sticky; top: 0; background: var(--panel); color: var(--ink-3); font-size: 12px; font-weight: 500; z-index: 1; }
+.funding-table th, .funding-table td { padding: 23px 20px; border-bottom: 1px solid var(--line); }
+.funding-table tbody tr:last-child > * { border-bottom: 0; }
+.funding-table td { color: var(--ink-3); }
+.funding-method-name { display: flex; align-items: center; gap: 22px; }
+.funding-method-name .payment-mark { display: flex; align-items: center; justify-content: center; width: 76px; height: 44px; flex-shrink: 0; overflow: hidden; }
+.funding-method-name .payment-mark img { width: 62px; height: 32px; object-fit: contain; }
+.funding-method-name strong { display: block; font-size: 16px; font-weight: 500; }
+.funding-method-name > div > span { display: block; color: var(--ink-3); font-size: 11px; font-weight: 400; margin-top: 4px; }
+.deposit-phone-scene { text-align: center; position: relative; padding: 24px; }
+.deposit-phone-scene::before { content: ''; position: absolute; inset: 20% 0; border-radius: 50%; background: radial-gradient(ellipse, var(--glow), transparent 70%); z-index: -1; }
+.deposit-phone-scene .tour-phone { width: 260px; }
+.deposit-phone-scene .inner-note { margin-inline: auto; }
+.guide-step-list li { display: grid; grid-template-columns: 32px 1fr; gap: 20px; padding: 23px 0; border-top: 1px solid var(--line); }
+.guide-step-list > li > span { color: var(--accent); font-size: 12px; padding-top: 4px; }
+.guide-step-list .lede { margin-top: 8px; font-size: 14px; }
+.guide-tutorial { display: inline-flex; align-items: center; gap: 12px; color: var(--accent); font-size: 13px; margin-top: 24px; border-bottom: 1px solid currentColor; padding-bottom: 5px; }
+.guide-tutorial:hover { color: var(--ink); }
+.withdrawal-band .guide-tutorial { color: #fff; }
+.withdrawal-band .inner-split > img { max-height: 450px; object-fit: contain; }
+.withdrawal-timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 46px; }
+.withdrawal-timeline li { border-top: 1px solid #ffffff80; padding-top: 20px; }
+.withdrawal-timeline__number { display: block; font-size: 12px; color: var(--mobile-accent); margin-bottom: 22px; }
+.withdrawal-timeline h3 { color: #fff; }
+.withdrawal-timeline p { margin-top: 14px; font-size: 14px; color: #f1f7ff; }
+.withdrawal-timeline__time { display: block; font-size: 11px; color: #f1f7ff; margin-top: 22px; }
+.crypto-local-layout { display: grid; grid-template-columns: 1.2fr .8fr; gap: 80px; align-items: start; }
+.crypto-guide-heading { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-bottom: 20px; }
+.crypto-guide-heading h3 { flex-basis: 100%; margin-top: 12px; }
+.network-guide { margin-top: 28px; }
+.network-guide__fields { display: grid; gap: 20px; }
+.network-guide label { display: grid; gap: 8px; font-size: 13px; }
+.network-guide__result { margin-top: 24px; padding: 24px 0; border-block: 1px solid var(--line); }
+.network-guide__result > p:not(.eyebrow):not(.inner-note) { font-size: 16px; margin-top: 14px; }
+.local-payments-note > img { width: 100%; height: 280px; object-fit: contain; margin-bottom: 22px; }
+.local-payments-note > .lede { margin-top: 14px; }
+.local-payments-note .btn { white-space: normal; text-align: center; }
+.setup-story { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: start; }
+.setup-story__visual { position: sticky; top: 110px; padding-top: 18px; }
+.setup-story__counter { display: flex; align-items: baseline; gap: 12px; color: var(--ink-3); font-size: 16px; }
+.setup-story__counter span:first-child { font-size: 62px; color: var(--accent); letter-spacing: -.045em; line-height: 1; }
+.setup-story__art { position: relative; aspect-ratio: 1; margin: 8px 0 24px; }
+.setup-story__art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transform: translateY(12px); transition: opacity .45s, transform .45s; }
+.setup-story__art img[data-active='true'] { opacity: 1; transform: none; }
+.setup-story__progress { height: 2px; background: var(--line); }
+.setup-story__progress span { display: block; height: 100%; background: var(--accent); transition: width .4s; }
+.setup-story__visual > p { color: var(--ink-3); font-size: 12px; margin-top: 18px; }
+.setup-step { min-height: 78svh; padding: 50px 0 80px; border-bottom: 1px solid var(--line); scroll-margin-top: 30px; }
+.setup-step:first-child { padding-top: 22px; }
+.setup-step:last-child { border-bottom: 0; }
+.setup-step .h-lg { margin: 20px 0 24px; }
+.setup-step ul { margin-top: 28px; }
+.setup-step li { color: var(--ink-2); font-size: 14px; padding: 14px 0; border-top: 1px solid var(--line); }
+.setup-step__mobile-art { display: none; }
+.verification-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.verification-layout .section-head { text-align: left; }
+.verification-count { color: var(--ink-3); font-size: 14px; margin-top: 30px; }
+.verification-count strong { font-size: 48px; letter-spacing: -.04em; font-weight: 500; color: var(--accent); }
+.verification-checklist label { display: flex; gap: 20px; padding: 27px 0; border-bottom: 1px solid var(--line); cursor: pointer; }
+.verification-checklist label:first-child { border-top: 1px solid var(--line); }
+.verification-checklist input { width: 20px; height: 20px; flex-shrink: 0; margin-top: 4px; }
+.verification-checklist strong { display: block; font-size: 18px; font-weight: 500; }
+.verification-checklist span > span { display: block; font-size: 14px; color: var(--ink-3); line-height: 1.7; margin-top: 8px; }
+.verification-checklist [data-checked='true'] strong { color: var(--accent); }
+.setup-account-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.setup-account { background: var(--card); padding: 28px; }
+.setup-account > img { width: 100%; height: 210px; object-fit: contain; margin-bottom: 20px; }
+.setup-account .lede { margin-top: 12px; min-height: 52px; font-size: 14px; }
+.setup-account__minimum { font-size: 12px; color: var(--ink-3); margin-top: 22px; }
+.setup-account__minimum strong { font-size: 30px; font-weight: 500; color: var(--ink); letter-spacing: -.04em; margin-right: 6px; }
+.setup-platforms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 46px; }
+.setup-platform { display: flex; align-items: center; gap: 16px; padding: 24px 0; border-block: 1px solid var(--line); }
+.setup-platform > img { width: 44px; height: 44px; object-fit: contain; }
+.setup-platform > span:last-child { margin-left: auto; color: var(--accent); }
+.setup-platform strong { font-size: 16px; font-weight: 500; }
+.setup-platform span > span { display: block; font-size: 12px; color: var(--ink-3); margin-top: 4px; }
+.setup-platform:hover strong { color: var(--accent); }
+@media (max-width: 980px) {
+  .funding-controls { flex-direction: column; }
+  .crypto-local-layout, .setup-story, .verification-layout { gap: 40px; }
+  .setup-account { padding: 24px; }
+  .setup-platforms { gap: 18px; }
+  .setup-platform { gap: 12px; }
+  .setup-platform strong { font-size: 14px; }
+  .setup-platform span > span { font-size: 11px; }
+  .setup-story__visual { top: 100px; }
+}
+@media (max-width: 760px) {
+  .funding-logo-rail { flex-wrap: wrap; justify-content: center; gap: 24px 36px; padding-block: 26px; }
+  .funding-logo-rail img { width: 64px; height: 34px; }
+  .funding-filters { gap: 6px 18px; }
+  .funding-table-wrap { overflow: visible; max-height: none; border: 0; }
+  .funding-table, .funding-table tbody { display: block; }
+  .funding-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .funding-table tr { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: 18px; background: var(--card); margin-bottom: 18px; padding: 20px; gap: 18px; }
+  .funding-table th, .funding-table td { display: block; border: 0; padding: 0; }
+  .funding-table tbody th { grid-column: span 2; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+  .funding-table td::before { content: attr(data-label); display: block; font-size: 11px; margin-bottom: 6px; }
+  .funding-table td { color: var(--ink-2); }
+  .deposit-layout > div:first-child { order: 2; }
+  .withdrawal-timeline { grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+  .crypto-local-layout, .verification-layout { grid-template-columns: 1fr; }
+  .setup-story { display: block; }
+  .setup-story__visual { display: none; }
+  .setup-step { min-height: 0; padding-block: 44px 56px; }
+  .setup-step__mobile-art { display: block; width: 100%; height: 280px; object-fit: contain; margin-top: 24px; }
+  .setup-account-grid, .setup-platforms { grid-template-columns: 1fr; }
+  .setup-account .lede { min-height: 0; }
+  .setup-account > img { height: 230px; }
+  .setup-platforms { gap: 0; }
+  .setup-platform { border-bottom: 0; padding: 24px 8px; }
+  .setup-platform:last-child { border-bottom: 1px solid var(--line); }
+  .setup-platform strong { font-size: 16px; }
+  .setup-platform span > span { font-size: 13px; }
+}
+@media (max-width: 480px) {
+  .withdrawal-timeline { grid-template-columns: 1fr; }
+  .withdrawal-timeline li { padding-top: 22px; }
+  .withdrawal-timeline__number { margin-bottom: 12px; }
+  .withdrawal-timeline__time { margin-top: 12px; }
+  .deposit-phone-scene { padding-inline: 0; }
+  .funding-method-name { gap: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .setup-story__visual { position: static; }
+  .setup-step { min-height: 0; }
+  .setup-story__visual { display: none; }
+  .setup-story { grid-template-columns: 1fr; max-width: 840px; }
+  .setup-step__mobile-art { display: block; width: 100%; height: 280px; object-fit: contain; margin-top: 24px; }
+}
+}

@@ -1,0 +1,38 @@
+{
+  "tool": "Built-in image_gen",
+  "prompt": "Use case: precise-object-edit. Asset type: transparent website card sculpture, light-theme variant. Input image 1 is the edit target. Change ONLY every lime/yellow-green colored accent, glow, glass tint and reflected colored light to vivid sapphire/electric blue (#1479ee, brighter ice blue highlights). Preserve the EXACT sculpture geometry, objects, layout, perspective, proportions, charcoal metal, smoked glass, silver highlights, framing, placement and soft mirrored reflection. This must look like the identical asset recolored blue, not a redesign. Keep original square canvas and scale. Genuine transparent alpha background, including empty holes, no solid backdrop, no checkerboard baked in. No added objects or text. No green or yellow accents remain.",
+  "assets": [
+    {
+      "file": "leverage.webp",
+      "reference": "../leverage.png"
+    },
+    {
+      "file": "spreads.webp",
+      "reference": "../spreads.png"
+    },
+    {
+      "file": "instruments.webp",
+      "reference": "../instruments.png"
+    },
+    {
+      "file": "execution.webp",
+      "reference": "../execution.png"
+    },
+    {
+      "file": "support.webp",
+      "reference": "../support.png"
+    },
+    {
+      "file": "accounts.webp",
+      "reference": "../accounts.png"
+    },
+    {
+      "file": "demo.webp",
+      "reference": "../demo.png"
+    },
+    {
+      "file": "mobile.webp",
+      "reference": "../mobile.png"
+    }
+  ]
+}

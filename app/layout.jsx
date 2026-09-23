@@ -1,0 +1,53 @@
+import '@fontsource-variable/figtree';
+import './globals.css';
+import './styles/inner-pages.css';
+import './styles/trading-guides.css';
+import './styles/metatrader-section.css';
+import './styles/ratings-strip.css';
+import './styles/site-pages.css';
+import './styles/landing-updates.css';
+import './styles/partners-page.css';
+
+export const metadata = {
+  title: 'ByteFX — Trade with a global broker',
+  description:
+    'Access 150+ tradable instruments across Forex, Indices, Crypto, Commodities and Shares with ByteFX. Tight spreads, fast execution and support that answers.',
+  metadataBase: new URL('https://bytefx.com'),
+  openGraph: {
+    title: 'ByteFX — Trade with a global broker',
+    description:
+      'Access 150+ tradable instruments across Forex, Indices, Crypto, Commodities and Shares.',
+    siteName: 'ByteFX',
+    type: 'website',
+  },
+  icons: {
+    icon: [
+      { url: '/assets/logo/bytefx-icon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/assets/logo/bytefx-icon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: '/assets/logo/bytefx-icon-180.png',
+  },
+};
+
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#0f0f0f' },
+    { media: '(prefers-color-scheme: light)', color: '#f7f8f3' },
+  ],
+};
+
+/* Dark is the design's default — the artwork was rendered for it. Light is an
+   explicit opt-in, remembered per browser. Runs before first paint, so the page
+   never flashes the wrong theme. */
+const themeBoot = `(function(){try{var s=localStorage.getItem('bytefx-theme');document.documentElement.dataset.theme=(s==='light'||s==='dark')?s:'dark';}catch(e){document.documentElement.dataset.theme='dark';}})();`;
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBoot }} />
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}

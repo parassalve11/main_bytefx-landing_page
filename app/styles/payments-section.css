@@ -1,0 +1,34 @@
+﻿.payments-section { overflow: clip; }
+.payments-layout { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 80px; }
+.payments-story .eyebrow { margin-bottom: 20px; }
+.payments-story .h-lg { font-size: clamp(36px,3.8vw,54px); }
+.payments-story > .lede { font-size: 15px; margin-top: 22px; line-height: 1.8; }
+.payment-scene { position: relative; width: 100%; height: 500px; margin-top: 15px; isolation: isolate; }
+.payment-scene::before { content: ''; position: absolute; inset: 18% 10% 6%; z-index: -1; background: radial-gradient(ellipse,var(--glow),transparent 68%); }
+/* one wallet artwork, contained and centred in the scene at every width */
+.payment-scene__wallet { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; filter: drop-shadow(0 22px 28px #0004); }
+[data-theme='light'] .payment-scene__wallet { filter: drop-shadow(0 20px 26px #2a320f1f); }
+.payments-options { border-top: 1px solid var(--line); padding-top: 24px; }
+.payments-options__heading { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-bottom: 22px; }
+.payments-options__heading h3 { font-size: 21px; font-weight: 500; letter-spacing: -.02em; }
+.payments-options__heading > span { font-size: 10px; color: var(--ink-3); letter-spacing: .08em; text-transform: uppercase; }
+.payment-list { border-bottom: 1px solid var(--line); }
+.payment-option { border-top: 1px solid var(--line); transition: background .2s; }
+.payment-option[data-open='true'] { background: color-mix(in srgb,var(--accent) 4%,transparent); border-radius: 12px; }
+.payment-option h4 { margin: 0; }
+.payment-option button { display: flex; align-items: center; gap: 15px; padding: 17px 12px; width: 100%; text-align: left; }
+.payment-option button:hover .payment-option__name { color: var(--accent); }
+.payment-mark { display: grid; place-items: center; width: 58px; height: 39px; border-radius: 8px; padding: 5px 7px; background: #fff; flex-shrink: 0; }
+.payment-mark img { width: 100%; height: 100%; object-fit: contain; }
+.payment-mark--bitcoin img,.payment-mark--tether img { width: 28px; }
+.payment-option__name { font-size: 15px; font-weight: 500; transition: color .2s; }
+.payment-option__category { font-size: 10px; color: var(--ink-3); margin-left: auto; }
+.payment-option__toggle { font-size: 22px; width: 20px; text-align: center; color: var(--ink-3); font-weight: 300; }
+.payment-option[data-open='true'] .payment-option__toggle { color: var(--accent); }
+.payment-option__details { padding: 0 32px 20px 85px; font-size: 13px; line-height: 1.8; color: var(--ink-2); animation: mobile-screen-in .2s ease; }
+.payment-option__details[hidden] { display: none; }
+.payments-note { font-size: 10px; color: var(--ink-3); line-height: 1.8; margin-top: 20px; max-width: 65ch; }
+@media(max-width:1180px) { .payments-layout { gap: 40px; } .payment-scene { height: 430px; } .payment-option__category { display: none; } .payment-option__toggle { margin-left: auto; } }
+@media(max-width:760px) { .payments-layout { grid-template-columns: 1fr; gap: 28px; } .payments-story { text-align: center; } .payment-scene { width: min(480px,100%); height: 370px; margin-inline: auto; margin-top: 20px; } .payments-options__heading h3 { font-size: 19px; } .payment-option__category { display: block; } }
+@media(max-width:420px) { .payment-scene { height: 310px; } .payment-option__category { display: none; } .payment-option button { gap: 12px; padding-inline: 7px; } .payment-option__details { padding: 0 14px 19px 77px; font-size: 12px; } }
+@media(prefers-reduced-motion:reduce) { .payment-option,.payment-option__name { transition: none; } .payment-option__details { animation: none; } }

@@ -1,0 +1,7 @@
+{
+  "tool": "Built-in imagegen",
+  "asset": "/assets/generated/blue/closing-market-scene.png",
+  "source": "/assets/generated/closing-market-scene.png",
+  "prompt": "Use case: precise-object-edit. Edit target: supplied transparent market scene for ByteFX website closing call-to-action. Create a matching blue variant for light mode: change only the lime/yellow-green edge lights, tint, and reflections to vivid electric blue and cool cobalt. Preserve exactly the wide composition, positions, scales, polished dark glass cards, metallic materials, readable white instrument labels OIL, NAS100, US30, EURUSD, XAUUSD, BTCUSD, and the large empty transparent center. Preserve the transparent background and alpha around objects. No new objects or text. Output a transparent PNG with the same wide aspect ratio. Project asset; save image file for integration.",
+  "suppliedAssets": { "referral": "temp/image.png (image1.png and image2.png are identical copies)", "markets": "/assets/generated/blue/markets-lineup.webp", "wallet": "/assets/generated/blue/wallet-payment-methods.webp" }
+}
