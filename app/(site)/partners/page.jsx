@@ -4,9 +4,9 @@ import Reveal from '@/components/reveal';
 import SmartLink from '@/components/smart-link';
 import EnquiryForm from '@/components/inner/enquiry-form';
 import PartnerEstimator from '@/components/inner/partner-estimator';
-import { FAQ, PageHero, PageSchema, SectionHead, ThemeArt, pageMetadata } from '@/components/inner/page-kit';
+import { PageHero, PageSchema, SectionHead, ThemeArt, pageMetadata } from '@/components/inner/page-kit';
 import { documents, site } from '@/lib/content';
-import { clientOffer, partnerBenefits, partnerSteps, partnersFaqs, partnersPage as page } from '@/lib/pages/partners';
+import { clientOffer, partnerBenefits, partnerSteps, partnersPage as page } from '@/lib/pages/partners';
 
 export const metadata = pageMetadata(page);
 const fields = [
@@ -22,7 +22,7 @@ const fields = [
 
 export default function PartnersPage() {
   return <main id="main" className="inner-page partners-page">
-    <PageSchema page={page} faqs={partnersFaqs} />
+    <PageSchema page={page} />
     <PageHero page={page} />
     <nav className="partner-nav shell" aria-label="On this page"><a href="#benefits">Partner benefits</a><a href="#how-it-works">How it works</a><a href="#earnings">Earnings estimator</a><a href="#become-ib">Become a partner <span aria-hidden="true">&#8599;</span></a></nav>
     <section className="band" id="benefits"><div className="shell">
@@ -55,7 +55,7 @@ export default function PartnersPage() {
       </div>
       <EnquiryForm subject="ByteFX IB partnership enquiry" fields={fields} title="Partner enquiry" description="A little about you. A clear next step." submitLabel="Prepare partnership enquiry" consent={<>I agree to the <a href={documents[1].href} target="_blank" rel="noopener noreferrer">privacy policy</a> and to being contacted about my partnership enquiry.</>} note="This prepares a draft in your email app. Review and send it to complete your enquiry." />
     </div></section>
-    <FAQ items={partnersFaqs} title="Partnership, explained." />
+    
     <ClosingSection title="Grow with us." accent="Start referring." lead="Up to 40% revenue share, fast payouts and a relationship manager on your side." primary={{ label: 'Become a partner', href: '#become-ib' }} secondary={{ label: 'Contact us', href: '/contact' }} />
   </main>;
 }

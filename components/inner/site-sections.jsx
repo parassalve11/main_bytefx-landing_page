@@ -12,8 +12,8 @@ export function LeadHero({ page, children, after }) {
 
 /* A wide, captioned photograph from the landing page hero. `pos` and
    `mobilePos` keep the subject in frame at 21:9 and at 4:5 on phones. */
-export function PhotoBand({ src, alt, eyebrow, title, body, pos = '50% 50%', mobilePos = '50% 50%', caption = 'bottom' }) {
-  return <section className="photo-band-wrap"><div className="shell"><Reveal as="figure" className="photo-band" data-caption={caption} style={{ '--pos': pos, '--pos-m': mobilePos }}><Image src={src} alt={alt} fill sizes="(max-width: 1288px) 100vw, 1240px" /><figcaption><p className="eyebrow">{eyebrow}</p><h2 className="h-lg">{title}</h2><p className="lede">{body}</p></figcaption></Reveal></div></section>;
+export function PhotoBand({ src, alt, eyebrow, title, body, pos = '50% 50%', mobilePos = '50% 50%', caption = 'bottom', fullWidth = false }) {
+  return <section className={`photo-band-wrap${fullWidth ? ' photo-band-wrap--full' : ''}`}><div className="shell"><Reveal as="figure" className="photo-band" data-caption={caption} style={{ '--pos': pos, '--pos-m': mobilePos }}><Image src={src} alt={alt} fill sizes={fullWidth ? "100vw" : "(max-width: 1288px) 100vw, 1240px"} /><figcaption><p className="eyebrow">{eyebrow}</p><h2 className="h-lg">{title}</h2><p className="lede">{body}</p></figcaption></Reveal></div></section>;
 }
 
 /* Icon, title and body cards. `items` is a list of [icon, title, body]. */

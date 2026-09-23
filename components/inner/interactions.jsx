@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { accounts } from '@/lib/accounts';
 import SmartLink from '@/components/smart-link';
 import { SectionHead } from './page-kit';
+import IPhonePreview from './iphone-preview';
 
 export function StickySubnav({ items }) {
   const [active, setActive] = useState(items[0][0]);
@@ -42,35 +43,52 @@ export function AccountFinder() {
     ['Starting deposit', deposit, setDeposit, [['starter', '$20 – $1,999'], ['growth', '$2,000 or more']]],
     ['How often you trade', volume, setVolume, [['occasional', 'A few trades a week'], ['active', 'Every trading day'], ['high', 'High volume or Expert Advisors']]],
   ];
-  return <section className="mobile-section inner-color-band" id="find-account"><div className="shell account-finder"><div><p className="eyebrow">Find your account</p><h2 className="h-lg">Your approach.<br />Your starting point.</h2><p className="lede">Three questions to narrow down your account options.</p><div className="finder-fields">{fields.map(([label, value, setter, options]) => <label key={label}>{label}<select value={value} onChange={e => setter(e.target.value)}>{options.map(([key, text]) => <option key={key} value={key}>{text}</option>)}</select></label>)}</div><p className="inner-note">A guide to the account types, not a suitability assessment or investment advice.</p></div><div className="finder-result" aria-live="polite"><div className="theme-art finder-art" data-paired="true"><Image className="theme-art__dark" src={recommendation.art} alt="" width={768} height={768} sizes="(max-width: 760px) 70vw, 320px" /><Image className="theme-art__light" src={recommendation.lightArt} alt="" width={768} height={768} sizes="(max-width: 760px) 70vw, 320px" /></div><p className="eyebrow">Your account to explore</p><h3>{recommendation.name}</h3><p>{recommendation.summary}</p><div className="finder-actions"><SmartLink className="btn btn--solid" href={recommendation.cta.href}>{recommendation.cta.label}</SmartLink><a className="finder-details" href="#account-options">See the details</a></div></div></div></section>;
+  return <section className="mobile-section inner-color-band account-finder-section" id="find-account"><div className="shell">
+    <div className="finder-heading"><p className="eyebrow">Find your account</p><h2 className="h-lg">Your approach.<br />Your starting point.</h2><p className="lede">A few details about how you trade. A clearer place to begin.</p></div>
+    <div className="account-finder"><div className="finder-fields">
+      {fields.map(([label, value, setter, options], index) => <fieldset key={label}><legend><span>0{index + 1}</span>{label}</legend><div className="finder-options">{options.map(([key, text]) => <label key={key} data-selected={value === key}><input type="radio" name={`finder-${index}`} value={key} checked={value === key} onChange={() => setter(key)} /><span>{text}</span></label>)}</div></fieldset>)}
+      <p className="inner-note">A guide to the account types, not a suitability assessment or investment advice.</p>
+    </div><div className="finder-result"><Image className="finder-new-art" src="/assets/generated/account-paths.webp" alt="Three crystal account cards on ascending silver steps" width={1100} height={1100} sizes="(max-width: 760px) 80vw, 400px" />
+      <div className="finder-result__copy" aria-live="polite" aria-atomic="true"><p className="eyebrow">Your account to explore</p><h3>{recommendation.name}</h3><p>{recommendation.summary}</p><dl className="finder-specs"><div><dt>Starting deposit</dt><dd>{recommendation.deposit ? `$${recommendation.deposit.toLocaleString('en-US')}` : 'Tailored'}</dd></div><div><dt>Spread from</dt><dd>{recommendation.id === 'standard' ? '1.9' : recommendation.id === 'pro' ? '1.0' : '0.0'} pips</dd></div></dl></div>
+      <div className="finder-actions"><SmartLink className="btn btn--solid" href={recommendation.cta.href}>{recommendation.cta.label}</SmartLink><a className="finder-details" href="#account-options">Compare all account details ↗</a></div>
+    </div></div>
+  </div></section>;
 }
+const tourScreens = [
+  ['Home', '/assets/mobile/bytefx-account.png', 'Your account, at a glance.', 'Your balance, your accounts and your funding controls. All together, ready when you are.'],
+  ['Trade', '/assets/mobile/bytefx-chart.png', 'Your next move, in focus.', 'Follow the chart, review your order and keep your trading plan close.'],
+  ['Tournaments', '/assets/mobile/tournaments-screen.png', 'Your skill sets the pace.', 'Explore ByteFX trading tournaments, see the prize pool and find your next challenge.'],
+];
 export function AppTour() {
-  const screens = [
-    ['Home', '/assets/mobile/bytefx-account.png', 'Your account, at a glance.', 'Check your account and reach your funding controls from one place.'],
-    ['Trade', '/assets/mobile/bytefx-chart.png', 'Your next move, in focus.', 'Follow the chart and review order settings before you trade.'],
-    ['Competition', null, 'Put your practice to work.', 'Competition screen preview and availability: TBC.'],
-    ['Insights', null, 'Keep your perspective.', 'Insights screen preview and available features: TBC.'],
-    ['Account', null, 'Keep the essentials close.', 'Account screen preview and available settings: TBC.'],
-  ];
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const refs = useRef([]);
+  const steps = useRef([]);
   useEffect(() => {
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (paused || reduced.matches) return;
-    const timer = setInterval(() => { if (!document.hidden && !reduced.matches) setActive(i => (i + 1) % screens.length); }, 8000);
-    return () => clearInterval(timer);
-  }, [paused, screens.length]);
-  function keyDown(e, i) {
-    let next = i;
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % screens.length;
-    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (i + screens.length - 1) % screens.length;
-    else if (e.key === 'Home') next = 0;
-    else if (e.key === 'End') next = screens.length - 1;
-    else return;
-    e.preventDefault(); setActive(next); refs.current[next]?.focus();
-  }
-  return <section className="band" id="app-tour" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={e => { if (!e.currentTarget.contains(e.relatedTarget)) setPaused(false); }}><div className="shell"><SectionHead eyebrow="Inside the app" title="Less searching." accent="More doing." body="A closer look at the app, using actual ByteFX screens." /><div className="app-tour"><div role="tablist" aria-label="App screens" className="app-tour__tabs">{screens.map(([name], i) => <button ref={el => { refs.current[i] = el; }} type="button" id={`app-tab-${i}`} aria-controls={`app-panel-${i}`} role="tab" aria-selected={active === i} tabIndex={active === i ? 0 : -1} key={name} onClick={() => setActive(i)} onKeyDown={e => keyDown(e, i)}><span>0{i + 1}</span>{name}</button>)}</div>{screens.map(([name, src, title, body], i) => <div role="tabpanel" tabIndex={0} id={`app-panel-${i}`} aria-labelledby={`app-tab-${i}`} key={name} hidden={active !== i} className="app-tour__panel"><div className="tour-phone">{src ? <Image src={src} alt={`ByteFX ${name} screen`} width={1220} height={2712} sizes="260px" /> : <div className="screen-pending"><Image src="/assets/mobile/app-icon.webp" alt="ByteFX" width={72} height={72} /><p>{name}</p><span>Screen preview<br />coming soon</span></div>}</div><div className="app-tour__caption"><p className="eyebrow">{name}</p><h3 className="h-md">{title}</h3><p className="lede">{body}</p></div></div>)}</div></div></section>;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const marker = window.innerHeight * 0.58;
+      let current = 0;
+      steps.current.forEach((step, index) => { if (step && step.getBoundingClientRect().top <= marker) current = index; });
+      setActive(current);
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    update();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    return () => { cancelAnimationFrame(frame); window.removeEventListener('scroll', schedule); window.removeEventListener('resize', schedule); };
+  }, []);
+  return <section className="band app-scroll-tour" id="app-tour"><div className="shell">
+    <SectionHead eyebrow="Inside the app" title="Less searching." accent="More doing." body="Scroll to explore your trading day, from the first glance to the next challenge." />
+    <div className="app-scroll-layout">
+      <div className="app-scroll-stage">
+        <div className="app-scroll-orbit" aria-hidden="true" />
+        <IPhonePreview>{tourScreens.map(([name, src], index) => <div className="iphone-screen-slide" data-active={active === index} aria-hidden={active !== index} key={name}><Image src={src} alt={'ByteFX ' + name + ' screen'} fill sizes="(max-width: 760px) 190px, 285px" /></div>)}</IPhonePreview>
+        <nav className="app-scroll-dots" aria-label="App tour screens">{tourScreens.map(([name], index) => <a key={name} href={'#tour-step-' + index} aria-label={'Explore ' + name} aria-current={active === index ? 'step' : undefined}><span /></a>)}</nav>
+        <p className="app-scroll-hint">Scroll to discover <span aria-hidden="true">↓</span></p>
+      </div>
+      <div className="app-scroll-stories">{tourScreens.map(([name, , title, body], index) => <article ref={element => { steps.current[index] = element; }} id={'tour-step-' + index} className="app-scroll-step" data-active={active === index} key={name}><span className="app-scroll-number">0{index + 1} / 03</span><p className="eyebrow">{name}</p><h3 className="h-lg">{title}</h3><p className="lede">{body}</p><span className="app-scroll-rule" aria-hidden="true" /></article>)}</div>
+    </div>
+  </div></section>;
 }
 export function StoreGallery() {
   const rail = useRef(null);

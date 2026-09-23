@@ -1,17 +1,17 @@
 import ClosingSection from '@/components/closing-section';
 import Icon from '@/components/icon';
 import Reveal from '@/components/reveal';
-import { FAQ, PageHero, PageSchema, SectionHead, pageMetadata } from '@/components/inner/page-kit';
+import { PageHero, PageSchema, SectionHead, pageMetadata } from '@/components/inner/page-kit';
 import { DocumentList, IconGrid, PhotoBand } from '@/components/inner/site-sections';
 import { documents, site } from '@/lib/content';
-import { officialChannels, protections, safetyHabits, trustFaqs, trustPage as page } from '@/lib/pages/company';
+import { officialChannels, protections, safetyHabits, trustPage as page } from '@/lib/pages/company';
 
 export const metadata = pageMetadata(page);
 const policyDocs = ['privacy', 'aml', 'risk', 'terms'].map(id => documents.find(doc => doc.id === id));
 
 export default function TrustPage() {
   return <main id="main" className="inner-page trust-page">
-    <PageSchema page={page} faqs={trustFaqs} />
+    <PageSchema page={page} />
     <PageHero page={page} />
     <section className="band" id="protection"><div className="shell">
       <SectionHead eyebrow="How your account is protected" title="Four layers" accent="of protection." />
@@ -30,7 +30,7 @@ export default function TrustPage() {
       <SectionHead eyebrow="Policy documents" title="Read the policies" accent="behind the protection." />
       <DocumentList items={policyDocs} />
     </div></section>
-    <FAQ items={trustFaqs} title="Security, explained." />
+    
     <ClosingSection title="Trade with" accent="confidence." lead="Questions about security? Our team answers 24/6." primary={{ label: 'Open your account', href: site.registerUrl }} secondary={{ label: 'Contact support', href: '/contact' }} />
   </main>;
 }

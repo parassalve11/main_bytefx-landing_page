@@ -1,0 +1,25 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "name": "account-paths",
+      "prompt": "Use case: stylized-concept. Create a premium 3D website cutout illustration for a trading account chooser: three frosted crystal account cards arranged as an ascending fan on three low brushed-silver steps, each with a distinct abstract embossed chart, a small polished blue and lime green detail. Elegant tactile glass and platinum, realistic soft studio lighting, front three-quarter view, clear simple silhouette, no words or numbers, no logo, no background rectangle. Genuinely transparent background with alpha. Must look excellent over both saturated blue and green backgrounds. Square composition, generous breathing room.",
+      "source": "C:\\Users\\paras\\.codex\\generated_images\\01a0cf44-0499-7fb2-92c7-7742c02de3f5\\exec-a1adcef8-e61d-49a6-93fd-d867a6ab6c96.png"
+    },
+    {
+      "name": "withdrawal-journey",
+      "prompt": "Use case: stylized-concept. Premium 3D website cutout illustrating withdrawal tracking: a polished silver coin traveling along a curved frosted-glass path through three round checkpoints, finishing at an elegant glass wallet with a prominent silver check mark. Restrained electric blue and lime green accents, predominantly pearlescent white and platinum materials so it reads on saturated blue and green backgrounds. Clean realistic studio product rendering, single cohesive composition, no text, no numbers, no ground plane, genuinely transparent background with alpha. Square composition.",
+      "source": "C:\\Users\\paras\\.codex\\generated_images\\01a0cf44-0499-7fb2-92c7-7742c02de3f5\\exec-d07ca805-77c6-416b-8f5e-6aa0d68c3482.png"
+    },
+    {
+      "name": "telegram-community",
+      "prompt": "Use case: stylized-concept. Premium 3D editorial website asset for Telegram trader community: one large recognizable white folded Telegram paper airplane emerging from an elegant translucent blue circular medallion, with a small group of frosted glass conversation bubbles in orbit, each holding a tiny minimal chart line or three dots. Polished platinum edges, subtle lime accent, sophisticated realistic studio lighting and depth, beautiful crisp materials. No phone, no people, no text, no watermark. Genuinely transparent background with alpha, generous margins, square composition. Must read on both saturated blue and green website panels.",
+      "source": "C:\\Users\\paras\\.codex\\generated_images\\01a0cf44-0499-7fb2-92c7-7742c02de3f5\\exec-9c8fc0a9-088a-4137-a7e2-8fdf22c2d721.png"
+    },
+    {
+      "name": "trading-conditions",
+      "prompt": "Use case: stylized-concept. Create a premium 3D trading website hero asset representing precise trading conditions: a sculptural group of five polished blue and frosted crystal financial candlesticks, interlocking with a thin brushed-platinum circular speed dial and a small lime accent indicator. Luxurious glass optics and machined silver, soft realistic studio lighting, dynamic but balanced three-quarter view, restrained blue and green palette, no text, no numbers, no fake UI, no background rectangle. Genuinely transparent background with alpha. Square composition with generous breathing room. Clear on both light and very dark backgrounds.",
+      "source": "C:\\Users\\paras\\.codex\\generated_images\\01a0cf44-0499-7fb2-92c7-7742c02de3f5\\exec-709bf712-96a3-4f92-93d3-ed1e00fc7fec.png"
+    }
+  ]
+}
