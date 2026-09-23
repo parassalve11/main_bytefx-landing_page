@@ -1,3 +1,4 @@
+import AtlasSection from '@/components/atlas-section';
 import PaymentsSection from '@/components/payments-section';
 import PlatformsSection from '@/components/platforms-section';
 import BentoSection from '@/components/bento-section';
@@ -19,6 +20,7 @@ export default function Home() {
         <PlatformsSection />
         <MobileSection />
         <PaymentsSection />
+        <AtlasSection />
         <RatingsStrip />
         <VoicesSection />
         <ClosingSection />

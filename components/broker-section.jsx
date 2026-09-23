@@ -9,7 +9,7 @@ import Reveal from './reveal';
 export default function BrokerSection() {
   const rail = useRef(null);
   const drag = useRef({ active: false, startX: 0, startScroll: 0 });
-  const interaction = useRef({ hover: false, focused: false, until: 0 });
+  const interaction = useRef({ focused: false, until: 0 });
   const [dragging, setDragging] = useState(false);
   const [paused, setPaused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -41,7 +41,7 @@ export default function BrokerSection() {
       const delta = previous ? Math.min(time - previous, 50) : 0;
       previous = time;
       const state = interaction.current;
-      if (visible && !document.hidden && !state.hover && !state.focused && !drag.current.active && time > state.until) {
+      if (visible && !document.hidden && !state.focused && !drag.current.active && time > state.until) {
         const width = loopWidth();
         if (width > 0) {
           position = (position + delta * 0.034) % width;
@@ -86,9 +86,7 @@ export default function BrokerSection() {
 
   return (
     <section className="band broker-section" id="broker" aria-labelledby="broker-title"
-      onMouseEnter={() => { interaction.current.hover = true; }}
-      onMouseLeave={() => { interaction.current.hover = false; }}
-      onFocusCapture={() => { interaction.current.focused = true; }}
+      onFocusCapture={(event) => { if (event.target.matches(':focus-visible')) interaction.current.focused = true; }}
       onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) interaction.current.focused = false; }}>
       <div className="shell">
         <Reveal className="section-head">

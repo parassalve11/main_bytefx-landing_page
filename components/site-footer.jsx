@@ -1,68 +1,12 @@
 import Image from 'next/image';
 import { footer, site } from '@/lib/content';
 import Icon from './icon';
-import SocialLogo from './social-logo';
-import Reveal from './reveal';
 import SmartLink from './smart-link';
-
-const MARQUEE_WORDS = [
-  { text: 'Discover your trading edge', icon: 'spark' },
-  { text: 'Trade with ByteFX', icon: 'globe' },
-  { text: 'Built for the modern trader', icon: 'shield' },
-];
-
-function MarqueeRun({ ariaHidden }) {
-  return (
-    <div className="marquee__run" aria-hidden={ariaHidden ? 'true' : undefined}>
-      {MARQUEE_WORDS.map((word) => (
-        <span key={word.text} className="marquee__word">
-          <Icon name={word.icon} size={22} />
-          {word.text}
-        </span>
-      ))}
-    </div>
-  );
-}
+import SocialLogo from './social-logo';
 
 export default function SiteFooter() {
   return (
-    <footer className="footer" aria-labelledby="footer-title">
-      <div className="shell">
-        <div className="footer__hail">
-          <Reveal>
-            <h2 className="h-lg" id="footer-title">
-              {footer.tagline}
-            </h2>
-            <p className="lede" style={{ marginTop: 14 }}>
-              {footer.connect}
-            </p>
-            <ul className="socials" style={{ marginTop: 20 }}>
-              {footer.socials.map((social) => (
-                <li key={social.id}>
-                  <SmartLink
-                    href={social.href}
-                    className={`social social--${social.id}`}
-                    target="_blank"
-                    aria-label={social.label}
-                    title={social.href ? social.label : `${social.label} — link coming soon`}
-                  >
-                    <SocialLogo name={social.id} />
-                  </SmartLink>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-
-        </div>
-      </div>
-
-      <div className="marquee">
-        <div className="marquee__track">
-          <MarqueeRun />
-          <MarqueeRun ariaHidden />
-        </div>
-      </div>
-
+    <footer className="footer" aria-label="ByteFX company information">
       <div className="shell">
         <div className="footer__grid">
           <div className="footer__brand">
@@ -71,6 +15,11 @@ export default function SiteFooter() {
               A global broker built on transparency, technology and long-term success.
             </p>
 
+            <ul className="footer__socials" aria-label="Follow ByteFX">
+              {footer.socials.map((social) => <li key={social.id}>
+                <SmartLink href={social.href} className={`footer__social footer__social--${social.id}`} target="_blank" rel="noopener noreferrer" aria-label={social.label} title={social.label}><SocialLogo name={social.id} /></SmartLink>
+              </li>)}
+            </ul>
             <div className="direct">
               <a href={`mailto:${site.email}`}>
                 <Icon name="mail" size={16} />

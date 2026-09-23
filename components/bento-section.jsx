@@ -93,13 +93,14 @@ export default function BentoSection() {
             <figure className="t-partner__mark">
               <span className="t-partner__halo" aria-hidden="true" />
               <Image
-                className="tile__art"
+                className="tile__art theme-art--dark"
                 src={partner.image}
                 alt={partner.alt}
                 width={partner.width}
                 height={partner.height}
                 sizes="(max-width: 760px) 58vw, (max-width: 1180px) 34vw, 240px"
               />
+              <Image className="tile__art theme-art--light" src="/assets/generated/bytefx-glass-mark-light.png" alt="ByteFX interlocking symbol in blue and green glass" width={1354} height={1161} sizes="(max-width: 760px) 58vw, (max-width: 1180px) 34vw, 240px" />
             </figure>
           </Reveal>
         </div>

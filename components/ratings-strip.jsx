@@ -10,7 +10,8 @@ export default function RatingsStrip() {
       <div className="shell ratings-strip__inner">
         <a className="ratings-strip__item" href={ratings.wikifx.url} target="_blank" rel="noopener noreferrer" title="View ByteFX on WikiFX">
           <span className="ratings-strip__logo ratings-strip__logo--wikifx">
-            <Image src="/assets/ratings/wikifx.svg" alt="WikiFX" width={105} height={26} />
+            <Image className="theme-art--dark" src="/assets/ratings/wikifx.svg" alt="WikiFX" width={121} height={30} />
+            <Image className="theme-art--light" src="/assets/ratings/wikifx-light.svg" alt="WikiFX" width={121} height={30} />
           </span>
           <span className="ratings-strip__details"><span className="ratings-strip__label">ByteFX on WikiFX</span><span className="ratings-strip__profile">View broker profile <span aria-hidden="true">↗</span></span></span>
         </a>

@@ -7,6 +7,8 @@ import './styles/ratings-strip.css';
 import './styles/site-pages.css';
 import './styles/landing-updates.css';
 import './styles/partners-page.css';
+import './styles/atlas-section.css';
+import './styles/landing-refinements.css';
 
 export const metadata = {
   title: 'ByteFX — Trade with a global broker',

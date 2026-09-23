@@ -1,0 +1,25 @@
+{
+  "tool": "Built-in imagegen",
+  "assets": [
+    {
+      "path": "/assets/generated/atlas-thinking-robot.png",
+      "reference": "User-provided Greek thinking statue photograph (pose and framing)",
+      "prompt": "Create a premium 3D rendered robot portrait for a ByteFX Atlas AI website introduction. Use only the user's Greek thinking statue photograph as the pose and framing reference (ignore the colored logo reference). Replace the entire human statue with an original elegant futuristic humanoid robot: seated, leaning forward thoughtfully, one elbow resting on its knee and one articulated hand supporting its chin, head slightly bowed. Preserve the contemplative philosopher posture and sculptural elegance. Three-quarter view facing gently toward the right, shown from head to upper knees. Material: refined brushed titanium, pearl-silver ceramic armor panels, graphite mechanical joints, subtle sapphire-blue light seams and calm blue eyes, beautifully modeled fingers. Sophisticated, intelligent and approachable, not a cartoon or toy, no human skin, no beard, no clothing. Dramatic soft studio illumination, carefully defined contours readable on both charcoal and near-white website backgrounds, editorial product-render quality. Isolated on a genuinely transparent background with alpha, no scenery, no floor, no lettering, no brand marks, no watermark. Portrait 4:5 framing with comfortable padding around the silhouette; clean cutout edges. Asset for the project landing page; output PNG."
+    },
+    {
+      "path": "/assets/generated/blue/bytefx-glass-mark.png",
+      "reference": "/assets/partner/bytefx-glass-mark.webp",
+      "prompt": "Use case: precise-object-edit. Edit target: the supplied raster ByteFX three-dimensional glass symbol. Create the same asset for placement on a white or very pale website card. Preserve its exact interlocking geometric silhouette, proportions, camera angle, beveled contours, and central four-point connector. Replace the lime-green glass areas with deep sapphire-blue crystal; render the existing blue part in a slightly lighter cool blue crystal, with crisp silver-blue edge highlights and navy refractions so the entire mark is legible on light backgrounds. Refined polished transparent glass, premium product lighting, subtle reflection below, no excessive bloom. Clean up all visible horizontal colored artifacts outside the symbol. Genuine transparent background/alpha around the entire object and inside its gaps; no backdrop, no text, no watermark, no new geometry. Keep the original landscape aspect ratio and full symbol within the frame. Project light-mode asset, PNG."
+    },
+    {
+      "path": "/assets/generated/blue/closing-market-scene.png",
+      "reference": "/assets/generated/closing-market-scene.png",
+      "prompt": "Use case: precise-object-edit. Edit target: supplied transparent market scene for ByteFX website closing call-to-action. Create a matching blue variant for light mode: change only the lime/yellow-green edge lights, tint, and reflections to vivid electric blue and cool cobalt. Preserve exactly the wide composition, positions, scales, polished dark glass cards, metallic materials, readable white instrument labels OIL, NAS100, US30, EURUSD, XAUUSD, BTCUSD, and the large empty transparent center. Preserve the transparent background and alpha around objects. No new objects or text. Output a transparent PNG with the same wide aspect ratio. Project asset; save image file for integration."
+    },
+    {
+      "path": "/assets/generated/bytefx-glass-mark-light.png",
+      "reference": "/assets/partner/bytefx-glass-mark.webp",
+      "prompt": "Regenerate this exact ByteFX three-dimensional glass brand emblem as a pristine transparent-background PNG for a light white website. Preserve its exact recognizable geometry, proportions, interlocking bracket-like blue upper/right form and lime-green lower/left form and central green four-point sparkle. Preserve ORIGINAL brand colors: saturated cobalt/electric blue upper right and vivid lime green lower left and sparkle; do not make it monochrome. Refine materials for white-background legibility with richer blue and slightly deeper lime edges, softly frosted glass faces, polished bevels, restrained studio reflections and defined edges. Premium realistic 3D product render. No white backdrop, no floor, no shadow rectangle, no stripes, no color artifacts, no text, no added shapes. Single centered emblem fully visible, transparent alpha background, generous 8% clear margin. Keep original silhouette faithfully."
+    }
+  ]
+}

@@ -7,7 +7,8 @@ export function Actions({ primary, secondary }) {
   return <div className="inner-actions">{[primary, secondary].filter(Boolean).map((action, i) => <SmartLink key={action.label} href={action.href} className={`btn ${i === 0 ? 'btn--solid' : 'btn--ghost'}`}>{action.label}{i === 0 && <Icon name="arrow" size={16} />}</SmartLink>)}</div>;
 }
 export function ThemeArt({ src, light, alt = '', priority = false, className = '', sizes = '(max-width: 760px) 90vw, 50vw' }) {
-  return <div className={`theme-art ${className}`} data-paired={Boolean(light)}><Image className="theme-art__dark" src={src} alt={alt} width={1100} height={1100} sizes={sizes} priority={priority} />{light && <Image className="theme-art__light" src={light} alt={alt} width={1100} height={1100} sizes={sizes} />}</div>;
+  const lightSource = light || (src === '/assets/partner/bytefx-glass-mark.webp' ? '/assets/generated/bytefx-glass-mark-light.png' : undefined);
+  return <div className={`theme-art ${className}`} data-paired={Boolean(lightSource)}><Image className="theme-art__dark" src={src} alt={alt} width={1100} height={1100} sizes={sizes} priority={priority} />{lightSource && <Image className="theme-art__light" src={lightSource} alt={alt} width={1100} height={1100} sizes={sizes} />}</div>;
 }
 /* `page.crumb` names the menu the page lives under (Trading, Markets, Company).
    Set it to null for pages that sit directly under Home. */

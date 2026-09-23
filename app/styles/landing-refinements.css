@@ -1,0 +1,48 @@
+﻿@layer components {
+  /* The hero keeps its cinematic background; its green accents follow the selected theme. */
+  [data-theme='light'] .hero-slider {
+    --hs-lime: #58adff;
+    --hs-lime-hi: #77bfff;
+    --hs-accent-rgb: 65 153 244;
+    --hs-rain-core: 174 220 255;
+  }
+  [data-theme='light'] .hs-tab__track i { background: #2787e9; }
+  [data-theme='light'] .chill-feed li { background: rgb(7 23 43 / 0.76); border-color: rgb(97 172 247 / 0.28); }
+  [data-theme='light'] .chill-feed__text b { color: #8dcaff; }
+  [data-theme='light'] .chill-feed__text small { color: #c1d6e9; }
+
+  /* Footer social links remain easy to identify and tap in either theme. */
+  .footer__socials { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin: 22px 0; }
+  .footer__social { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); background: var(--panel); transition: border-color 0.2s, background 0.2s; }
+  .footer__social svg { width: 21px; height: 21px; }
+  a.footer__social:hover { border-color: var(--accent); background: var(--panel-2); }
+  .footer__social--youtube { color: #ff3157; }
+  .footer__social--linkedin { color: #4399f1; }
+  .footer__social--instagram { color: #ef6391; }
+  [data-theme='light'] .footer__social--youtube { color: #df0030; }
+  [data-theme='light'] .footer__social--linkedin { color: #0a66c2; }
+  [data-theme='light'] .footer__social--instagram { color: #c52a69; }
+
+  /* Use the original vector wordmark with the correct aspect ratio in both themes. */
+  .ratings-strip__logo--wikifx { padding: 0; background: none; border-radius: 0; }
+  .ratings-strip__logo--wikifx img { width: 121px; height: auto; object-fit: contain; }
+  @media (max-width: 560px) {
+    .ratings-strip__logo--wikifx img { width: 105px; }
+    .ratings-strip__logo img { max-height: 27px; }
+  }
+
+  /* Restore the original beam treatment with a denser set of lines. */
+  .platform-lights__group { transform: none; transition: none; }
+  .platform-stage:hover img { transform: none; }
+
+  /* This blue account card uses the original green CTA for contrast. */
+  [data-theme='light'] .t-account .btn--solid {
+    --button-bg: #ade512;
+    --button-hover: #c2f23c;
+    --button-ink: #101508;
+    --button-shadow: rgb(76 112 4 / 0.18);
+  }
+  /* Market rain keeps its green identity independently of light-mode text. */
+  [data-theme='light'] .hs-rain { --hs-accent-rgb: 173 229 18; --hs-rain-core: 228 255 170; }
+}
+

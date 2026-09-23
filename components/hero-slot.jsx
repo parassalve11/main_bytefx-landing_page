@@ -471,7 +471,7 @@ export default function HeroSlot() {
 
               <div className="shell hs-layout">
                 <div className="hs-copy">
-                  <p className="hs-eyebrow"><span aria-hidden="true" />{slide.eyebrow}</p>
+                  <p className="hs-eyebrow">{slide.eyebrow}</p>
                   <Heading className="hs-title">
                     <span className="hs-line"><Words text={slide.title} start={0} /></span>{' '}
                     <span className="hs-line hs-line--accent"><Words text={slide.accent} start={titleWords} /></span>

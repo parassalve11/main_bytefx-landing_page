@@ -18,8 +18,9 @@ export default function ClosingSection({ title, accent, lead, primary = cta.prim
     const update = () => {
       frame = 0;
       const rect = el.getBoundingClientRect();
-      const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
-      const travel = Math.min(140, rect.width * 0.09);
+      // Settle at the section midpoint, keeping the artwork cropped at the edges.
+      const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / ((window.innerHeight + rect.height) / 2)));
+      const travel = Math.min(140, rect.width * 0.1);
       const shift = reducedMotion.matches ? 0 : (1 - progress) * travel;
       el.style.setProperty('--closing-shift', `${shift.toFixed(2)}px`);
     };
