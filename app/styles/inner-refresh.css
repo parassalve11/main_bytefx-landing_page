@@ -1,6 +1,14 @@
 @layer components {
 /* Scoped to inner routes, including their shared navigation. */
-body:has(.inner-page) {
+[data-theme='dark'] body:has(.inner-page) {
+  --button-bg: #ade512;
+  --button-hover: #c2f23c;
+  --button-ink: #132000;
+  --button-shadow: rgb(90 130 5 / .18);
+}
+/* Keep green CTAs only on blue surfaces in light mode. Other buttons inherit
+   the site's blue button tokens, including navigation on inner routes. */
+[data-theme='light'] :is(.mobile-section, .inner-color-band, .contact-body) {
   --button-bg: #ade512;
   --button-hover: #c2f23c;
   --button-ink: #132000;
