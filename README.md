@@ -173,5 +173,36 @@ The landing page (`/`) is unchanged. Inner pages share `components/inner/page-ki
 The Partners hero uses the landing hero's first image (`hero-mindset.webp`). The other three landing hero images appear as captioned photo bands: Global markets on About, Precious metals on Why ByteFX, Stay cool on Trust & security.
 
 `/trading/demo-account` was removed; `next.config.mjs` redirects it to Account types. Enquiry forms (Partners, Contact) open the visitor's email app addressed to support until a form backend is connected. Client-area links use `site.registerUrl` and `site.portalLoginUrl` in `lib/content.js`.
-#   m a i n _ b y t e f x - l a n d i n g _ p a g e  
+#   m a i n _ b y t e f x - l a n d i n g _ p a g e 
  
+ 
+## Market pages and trader tools — September 24, 2026
+
+Each market has its own page, built from one template (`app/(site)/markets/[market]/page.jsx`, sections in `components/markets/`, content in `lib/pages/markets.js`). The layout follows elefin.com's market pages, with no image assets:
+
+1. Hero: heading and one call to action over a CSS grid and glow, with a chart line drawn in code (a repeatable line per market, not price data).
+2. Market switcher: all six markets as pills, the current one highlighted.
+3. Trading instruments: heading, four stats and a live price table (`components/markets/price-table.jsx`). Prices come from `/api/quotes?market=<id>` (Yahoo Finance's public chart data, cached 15 seconds) and refresh every 15 seconds; a moved price flashes once. If the feed is down, a TradingView board with the same symbols is shown instead.
+4. Tabbed topics: three tabs of cards per market (`components/markets/market-tabs.jsx`), keyboard accessible.
+5. Platforms: MetaTrader 5, TradingView and the ByteFX app.
+6. FAQ: four questions per market.
+7. Closing colour band (green in dark mode, blue in light) with the leverage figure.
+
+`/markets` stays as the overview, unchanged; its market blocks keep their `#anchors` and link on to each page.
+
+| Route | Content |
+| --- | --- |
+| `/markets/forex`, `/crypto`, `/stocks`, `/commodities`, `/indices`, `/energy` | `lib/pages/markets.js` (`hero`, `instruments`, `rows`, `tabs`, `faqs`, `calc` per market) |
+| `/tools/calculator` | Currency converter (`components/tools/currency-converter.jsx`) |
+| `/tools/trading-calculator` | Margin, pip value and swap (`components/tools/trading-calculator.jsx`); accepts `?symbol=XAUUSD` |
+| `/tools/calendar` | TradingView economic calendar |
+| `/tools/quotes` | TradingView market quotes, one tab per market |
+
+Tool paths match the live bytefx.com URLs. `/tools` redirects to `/markets#tools`. Each tool page has two sections: the tool, then links to the other tools.
+
+- **Rates:** `app/api/rates/route.js` fetches Coinbase's public exchange rates (fiat, BTC, ETH, USDT, gold, silver), falls back to open.er-api.com (fiat only), and caches for 60 seconds on the server and at the edge. To use ByteFX's own feed, replace `fetchPrimary` and keep the response shape.
+- **Price tables:** `app/api/quotes/route.js` reads symbols from `rows` in `lib/pages/markets.js`, never from the request. Yahoo Finance's chart endpoint is public but unofficial; to use ByteFX's own feed, replace `fetchQuote` and keep the row shape. Commodity and energy rows use futures prices.
+- **TradingView widgets:** `components/tools/tv-widget.jsx` rebuilds the widget when the theme changes and keeps TradingView's required attribution link. The quotes tool and the price-table fallback use the TradingView symbol in each row.
+- **Drafts:** contract sizes in `lib/instruments.js` are standard MT5 values (`specsConfirmed = false` shows a note on the calculator). Swap rates are entered by the visitor. Stock, index and most crypto symbols in the price tables are not a confirmed ByteFX list.
+
+Navigation, footer (Energy added), About page, Atlas, sitemap and the header's current-menu marker were updated. Production build and ESLint pass. Checked at 390 and 1440 px in both themes with mocked rates and prices; Yahoo Finance, Coinbase and the TradingView widgets could not be reached from the build sandbox and need a check on a networked machine.

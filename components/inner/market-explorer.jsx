@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import Icon from '@/components/icon';
 import SmartLink from '@/components/smart-link';
-import { site } from '@/lib/content';
 
 /* One sticky stage on the left follows the market being read on the right.
    Each market is its own anchored block (#forex, #crypto…), so menu links and
@@ -45,8 +44,8 @@ export default function MarketExplorer({ markets }) {
               {market.examples.length > 0 && <ul className="market-chips" aria-label={`${market.name} instruments`}>{market.examples.map((item) => <li key={item}>{item}</li>)}</ul>}
               <dl className="market-facts">{market.facts.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
               <div className="inner-actions">
-                <SmartLink className="btn btn--solid btn--sm" href={site.registerUrl}>Trade {market.name.toLowerCase()}<Icon name="arrow" size={15} /></SmartLink>
-                <a className="btn btn--ghost btn--sm" href="https://www.bytefx.com/tools/quotes">Live quotes</a>
+                <SmartLink className="btn btn--solid btn--sm" href={`/markets/${market.id}`}>Explore {market.name.toLowerCase()}<Icon name="arrow" size={15} /></SmartLink>
+                <SmartLink className="btn btn--ghost btn--sm" href={`/markets/${market.id}#prices`}>Live prices</SmartLink>
               </div>
             </article>
           ))}

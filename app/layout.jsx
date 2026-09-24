@@ -10,6 +10,8 @@ import './styles/partners-page.css';
 import './styles/atlas-section.css';
 import './styles/landing-refinements.css';
 import './styles/inner-refresh.css';
+import './styles/markets-tools.css';
+import './styles/market-pages.css';
 
 export const metadata = {
   title: 'ByteFX — Trade with a global broker',

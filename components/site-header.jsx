@@ -24,6 +24,9 @@ const pathOf = (href) => (href ? href.split('#')[0] : null);
 
 export default function SiteHeader() {
   const pathname = usePathname();
+  /* One menu is marked current: the first whose links (or feature card)
+     point at this page, so /tools/calendar marks Markets & tools, not Learn. */
+  const currentMenu = navigation.find((entry) => entry.groups && (entry.groups.some((group) => group.items.some((item) => pathOf(item.href) === pathname)) || pathOf(entry.feature?.href) === pathname))?.id;
   const [openId, setOpenId] = useState(null);
   const [drawer, setDrawer] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -203,7 +206,7 @@ export default function SiteHeader() {
                   <button
                     type="button"
                     className="nav__trigger"
-                    data-current={entry.groups.some((group) => group.items.some((item) => pathOf(item.href) === pathname)) || undefined}
+                    data-current={currentMenu === entry.id || undefined}
                     aria-expanded={openId === entry.id}
                     aria-controls={`menu-${entry.id}`}
                     onClick={() => toggle(entry.id)}

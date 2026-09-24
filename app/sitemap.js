@@ -1,7 +1,9 @@
 const paths = [
   '/',
   '/trading/account-types', '/trading/mobile-app', '/trading/funding', '/trading/getting-started',
-  '/markets', '/partners',
+  '/markets', '/markets/forex', '/markets/crypto', '/markets/stocks', '/markets/commodities', '/markets/indices', '/markets/energy',
+  '/tools/calculator', '/tools/trading-calculator', '/tools/calendar', '/tools/quotes',
+  '/partners',
   '/about', '/why-bytefx', '/trust-security', '/contact', '/legal',
 ];
 export default function sitemap() {
