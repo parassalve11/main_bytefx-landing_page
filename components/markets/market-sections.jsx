@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import ThemedImage from '@/components/themed-image';
 import Icon from '@/components/icon';
 import SmartLink from '@/components/smart-link';
 import { Breadcrumbs, SectionHead } from '@/components/inner/page-kit';
@@ -56,8 +57,10 @@ export function MarketHero({ market, page }) {
             </div>
           </div>
           <div className="mk-hero__art">
-            <Image
+            <ThemedImage
               src={market.hero.art}
+              light={market.hero.lightArt}
+              frameRatio="1 / 1"
               alt={market.hero.alt}
               width={960}
               height={960}

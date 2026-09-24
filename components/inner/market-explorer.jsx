@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import ThemedImage from '@/components/themed-image';
 import { useEffect, useRef, useState } from 'react';
 import Icon from '@/components/icon';
 import SmartLink from '@/components/smart-link';
@@ -29,7 +29,7 @@ export default function MarketExplorer({ markets }) {
       <div className="shell market-explorer__grid">
         <div className="market-stage" aria-hidden="true">
           <div className="market-stage__frame">
-            {markets.map((market, index) => <Image key={market.id} src={market.image} alt="" fill sizes="(max-width: 980px) 1px, 52vw" data-active={index === active} />)}
+            {markets.map((market, index) => <ThemedImage key={market.id} src={market.image} light={market.lightImage} alt="" fill sizes="(max-width: 980px) 1px, 52vw" data-active={index === active} />)}
             <p className="market-stage__label"><Icon name={current.icon} size={18} />{current.name}</p>
           </div>
           <ol className="market-stage__dots">{markets.map((market, index) => <li key={market.id} data-active={index === active} />)}</ol>
@@ -37,7 +37,7 @@ export default function MarketExplorer({ markets }) {
         <div className="market-list" ref={list}>
           {markets.map((market, index) => (
             <article id={market.id} key={market.id} className="market-block" data-market={index} aria-labelledby={`${market.id}-title`}>
-              <div className="market-block__media"><Image src={market.image} alt={market.alt} width={1600} height={1000} sizes="(max-width: 980px) 92vw, 1px" /></div>
+              <div className="market-block__media"><ThemedImage src={market.image} light={market.lightImage} alt={market.alt} width={1600} height={1000} sizes="(max-width: 980px) 92vw, 1px" /></div>
               <p className="market-block__name"><span className="market-icon"><Icon name={market.icon} size={20} /></span>{market.name}</p>
               <h2 className="h-md" id={`${market.id}-title`}>{market.title}</h2>
               <p className="lede">{market.body}</p>

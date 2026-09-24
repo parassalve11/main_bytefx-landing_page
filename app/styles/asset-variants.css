@@ -1,0 +1,7 @@
+@layer components {
+  /* Keep theme visibility stronger than individual section image styles. */
+  html[data-theme='dark'] img.asset-variant.theme-art--light,
+  html[data-theme='light'] img.asset-variant.theme-art--dark { display: none; }
+  html[data-theme='dark'] img.asset-variant.theme-art--dark,
+  html[data-theme='light'] img.asset-variant.theme-art--light { display: block; }
+}

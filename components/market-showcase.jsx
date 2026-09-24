@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import ThemedImage from './themed-image';
 import { useEffect, useRef } from 'react';
 
 /* Trade global card: the market line-up floats gently, and on desktop it tilts
@@ -45,15 +45,7 @@ export default function MarketShowcase({ markets }) {
     <div ref={stage} className="market-showcase">
       <span className="market-showcase__glow" aria-hidden="true" />
       <div className="market-showcase__float">
-        <Image
-          className="market-showcase__art theme-art--dark"
-          src={markets.image}
-          alt={markets.alt}
-          width={markets.width}
-          height={markets.height}
-          sizes="(max-width: 760px) 86vw, (max-width: 1180px) 44vw, 360px"
-        />
-        <Image className="market-showcase__art theme-art--light" src="/assets/generated/blue/markets-lineup.webp" alt={markets.alt.replaceAll('lime', 'blue').replaceAll('green', 'blue')} width={1221} height={1288} sizes="(max-width: 760px) 86vw, (max-width: 1180px) 44vw, 360px" />
+        <ThemedImage className="market-showcase__art" src={markets.image} light={markets.lightImage} alt={markets.alt} width={markets.width} height={markets.height} frameRatio="1000 / 1055" sizes="(max-width: 760px) 86vw, (max-width: 1180px) 44vw, 360px" />
       </div>
     </div>
   );

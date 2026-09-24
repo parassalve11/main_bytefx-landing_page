@@ -1,4 +1,5 @@
-import Image from 'next/image';
+import ThemedImage from './themed-image';
+import { artwork } from '@/lib/artwork';
 import { site } from '@/lib/content';
 import Reveal from './reveal';
 import SmartLink from './smart-link';
@@ -19,7 +20,7 @@ export default function AtlasSection() {
       </Reveal>
       <Reveal as="figure" className="atlas-intro__portrait" delay={120}>
         <div className="atlas-intro__orbit" aria-hidden="true" />
-        <Image src="/assets/generated/atlas-thinking-robot.png" alt="Atlas, a silver humanoid robot in a thoughtful seated pose, resting its chin on its hand" width={1122} height={1402} sizes="(max-width: 760px) 88vw, (max-width: 1180px) 44vw, 590px" />
+        <ThemedImage src={artwork.atlas.dark} light={artwork.atlas.light} frameRatio="1122 / 1402" alt="Atlas, a silver humanoid robot holding a tablet" width={1122} height={1402} sizes="(max-width: 760px) 88vw, (max-width: 1180px) 44vw, 590px" />
         <figcaption><span>ATLAS</span><span>Intelligence, introduced.</span></figcaption>
       </Reveal>
     </div>

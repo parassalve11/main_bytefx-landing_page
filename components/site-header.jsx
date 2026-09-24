@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import ThemedImage from './themed-image';
 import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { navigation, site } from '@/lib/content';
@@ -260,7 +261,9 @@ export default function SiteHeader() {
                     {entry.feature ? (
                       <SmartLink href={entry.feature.href} className="mega__feature">
                         <figure>
-                          <Image
+                          <ThemedImage
+                            light={entry.feature.lightImage}
+                            frameRatio="4 / 3"
                             src={entry.feature.image}
                             alt={entry.feature.alt}
                             width={640}

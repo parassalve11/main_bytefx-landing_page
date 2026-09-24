@@ -1,6 +1,8 @@
 ﻿'use client';
 
 import Image from 'next/image';
+import ThemedImage from '@/components/themed-image';
+import { artwork } from '@/lib/artwork';
 import { useRef, useState } from 'react';
 import { platformOptions } from '@/lib/platforms';
 import Reveal from './reveal';
@@ -26,7 +28,7 @@ export default function PlatformsSection() {
           <p className="lede">A bigger picture at your desk. A closer connection on the move. Explore the tools that fit the way you trade.</p>
         </Reveal>
         <Reveal className="platform-stage">
-          <Image src="/assets/platforms/bytefx-device-setup.webp" alt="ByteFX trading charts on a laptop, withdrawals on a tablet, and the mobile trading app on a phone" width={1536} height={1024} sizes="(max-width: 760px) 100vw, (max-width: 1148px) 96vw, 1100px" />
+          <ThemedImage src={artwork.platforms.dark} light={artwork.platforms.light} frameRatio="3 / 2" alt="ByteFX trading charts on a laptop, withdrawals on a tablet, and the mobile trading app on a phone" width={1536} height={1024} sizes="(max-width: 760px) 100vw, (max-width: 1148px) 96vw, 1100px" />
         </Reveal>
         <Reveal className="platform-guide__selector">
           <div className="platform-tabs" role="tablist" aria-label="Trading platforms">
