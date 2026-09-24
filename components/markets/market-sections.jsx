@@ -181,7 +181,7 @@ export function MarketCta({ market }) {
           <strong>1:2000<sup>*</sup></strong>
           <span>Leverage up to</span>
         </div>
-        <p className="inner-note mk-cta__note">* Maximum leverage depends on market volatility.</p>
+        <p className="inner-note mk-cta__note">*</p>
       </div>
     </section>
   );
