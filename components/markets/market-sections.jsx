@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Icon from '@/components/icon';
 import SmartLink from '@/components/smart-link';
 import { Breadcrumbs, SectionHead } from '@/components/inner/page-kit';
@@ -6,9 +7,7 @@ import { markets } from '@/lib/pages/markets';
 import MarketTabs from './market-tabs';
 import PriceTable from './price-table';
 
-/* The seven sections of a /markets/<id> page, following elefin.com's market
-   pages. No image assets: the hero background is CSS plus a chart line drawn
-   in code. */
+/* Shared market sections, with individual artwork and an animated chart. */
 
 /* A repeatable rising line for the hero, different for each market. */
 function heroLine(seed, count = 72) {
@@ -47,12 +46,24 @@ export function MarketHero({ market, page }) {
       </div>
       <div className="shell">
         <Breadcrumbs page={page} />
-        <div className="mk-hero__copy">
-          <p className="eyebrow">{market.name} trading</p>
-          <h1 id="mk-hero-title">{market.hero.title}<br /><span className="tint">{market.hero.accent}</span></h1>
-          <p className="lede">{market.hero.lede}</p>
-          <div className="inner-actions">
-            <SmartLink className="btn btn--solid" href={site.registerUrl}>Open an account<Icon name="arrow" size={16} /></SmartLink>
+        <div className="mk-hero__layout">
+          <div className="mk-hero__copy">
+            <p className="eyebrow">{market.name} trading</p>
+            <h1 id="mk-hero-title">{market.hero.title}<br /><span className="tint">{market.hero.accent}</span></h1>
+            <p className="lede">{market.hero.lede}</p>
+            <div className="inner-actions">
+              <SmartLink className="btn btn--solid" href={site.registerUrl}>Open an account<Icon name="arrow" size={16} /></SmartLink>
+            </div>
+          </div>
+          <div className="mk-hero__art">
+            <Image
+              src={market.hero.art}
+              alt={market.hero.alt}
+              width={960}
+              height={960}
+              sizes="(max-width: 760px) 88vw, (max-width: 980px) 420px, 44vw"
+              priority
+            />
           </div>
         </div>
       </div>

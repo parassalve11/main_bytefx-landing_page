@@ -8,7 +8,7 @@
 }
 /* Keep green CTAs only on blue surfaces in light mode. Other buttons inherit
    the site's blue button tokens, including navigation on inner routes. */
-[data-theme='light'] :is(.mobile-section, .inner-color-band, .contact-body) {
+[data-theme='light'] :is(.mobile-section, .inner-color-band, .contact-body, .plan--pro) {
   --button-bg: #ade512;
   --button-hover: #c2f23c;
   --button-ink: #132000;
