@@ -12,6 +12,7 @@ import './styles/landing-refinements.css';
 import './styles/inner-refresh.css';
 import './styles/markets-tools.css';
 import './styles/market-pages.css';
+import './styles/site-refinements.css';
 
 export const metadata = {
   title: 'ByteFX — Trade with a global broker',

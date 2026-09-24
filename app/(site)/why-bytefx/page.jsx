@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import ClosingSection from '@/components/closing-section';
+import MarketFeature from '@/components/inner/market-feature';
 import Icon from '@/components/icon';
 import { PageHero, PageSchema, SectionHead, pageMetadata } from '@/components/inner/page-kit';
-import { IconGrid, PhotoBand, StartSteps } from '@/components/inner/site-sections';
+import { IconGrid, StartSteps } from '@/components/inner/site-sections';
 import { site } from '@/lib/content';
 import { mt5Downloads, reasons, whyPage as page, withdrawalSpeeds } from '@/lib/pages/company';
 
@@ -16,7 +17,7 @@ export default function WhyPage() {
       <SectionHead eyebrow="Six reasons" title="Why traders" accent="choose ByteFX." />
       <IconGrid items={reasons} />
     </div></section>
-    <PhotoBand fullWidth src="/assets/hero/hero-precious-metals.webp" alt="A fine gold bar and silver bars wrapped in a flowing ribbon of gold" eyebrow="Gold and silver" title="Trade the metals that move markets." body="Access spot gold and silver alongside the most-watched currency pairs, with tight spreads and fast execution." pos="50% 50%" mobilePos="82% 50%" />
+    <MarketFeature src="/assets/hero/hero-precious-metals.webp" alt="Gold and silver bars wrapped in a flowing ribbon of gold" eyebrow="Gold and silver" title="Trade the metals" accent="that move markets" body="Access spot gold and silver alongside the most-watched currency pairs, with tight spreads and fast execution." href="/markets/commodities" linkLabel="Explore metals" position="65% 55%" />
     <section className="mobile-section inner-color-band" id="platform"><div className="shell inner-split">
       <div>
         <p className="eyebrow">MetaTrader 5</p>

@@ -134,8 +134,8 @@ export function MarketTopics({ market }) {
 }
 
 const platforms = [
-  { id: 'mt5', tag: 'Recommended', name: 'MetaTrader 5', body: 'Multi-asset analysis, trading tools and algorithmic strategies.', devices: ['windows', 'apple', 'android'], href: 'https://www.metatrader5.com/en', link: 'Explore MetaTrader 5' },
-  { id: 'tradingview', tag: 'Charts', name: 'TradingView', body: 'Interactive charts, custom indicators and trading ideas.', devices: ['globe'], href: 'https://www.tradingview.com/features/', link: 'Explore TradingView' },
+  { id: 'mt5', tag: 'Recommended', name: 'MetaTrader 5', body: 'Multi-asset analysis, trading tools and algorithmic strategies.', logo: '/assets/platforms/mt5-icon.png', devices: ['windows', 'apple', 'android', 'globe'], href: 'https://www.metatrader5.com/en', link: 'Explore MetaTrader 5' },
+  { id: 'tradingview', tag: 'Charts', name: 'TradingView', body: 'Interactive charts, custom indicators and trading ideas.', logo: '/assets/platforms/tradingview.png', devices: ['windows', 'apple', 'android', 'globe'], href: 'https://www.tradingview.com/features/', link: 'Explore TradingView' },
   { id: 'app', tag: 'Mobile', name: 'ByteFX app', body: 'Your account, funding and the markets in one app.', devices: ['android', 'apple'], href: '/trading/mobile-app', link: 'Get the app' },
 ];
 
@@ -148,9 +148,9 @@ export function MarketPlatforms() {
           {platforms.map((item) => (
             <li key={item.id} className="mk-platform" data-featured={item.id === 'mt5' || undefined}>
               <span className="mk-platform__tag">{item.tag}</span>
-              <h3 className="h-md">{item.name}</h3>
+              <h3 className={`h-md mk-platform__brand mk-platform__brand--${item.id}`}>{item.id === 'app' ? <><Image src="/assets/logo/bytefx.png" alt="ByteFX" width={384} height={82} /><span>app</span></> : <><span className="mk-platform__logo"><Image src={item.logo} alt="" width={64} height={64} /></span><span>{item.name}</span></>}</h3>
               <p className="lede">{item.body}</p>
-              <span className="mk-platform__devices" aria-hidden="true">{item.devices.map((device) => <Icon key={device} name={device} size={16} />)}</span>
+              <ul className="mk-platform__devices" aria-label="Supported devices">{item.devices.map((device) => <li key={device} title={{ windows: 'Windows', apple: 'Apple', android: 'Android', globe: 'Web' }[device]}><Icon name={device} size={18} /><span className="sr-only">{{ windows: 'Windows', apple: 'Apple', android: 'Android', globe: 'Web' }[device]}</span></li>)}</ul>
               <SmartLink className="mk-platform__link" href={item.href} {...(item.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{item.link}<Icon name="arrow" size={14} /></SmartLink>
             </li>
           ))}
@@ -178,7 +178,7 @@ export function MarketCta({ market }) {
           <strong>1:2000<sup>*</sup></strong>
           <span>Leverage up to</span>
         </div>
-        <p className="inner-note mk-cta__note">* Maximum leverage depends on instrument class and account equity. Leverage magnifies losses as well as gains.</p>
+        <p className="inner-note mk-cta__note">* Maximum leverage depends on market volatility.</p>
       </div>
     </section>
   );

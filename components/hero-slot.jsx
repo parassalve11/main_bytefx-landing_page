@@ -471,10 +471,10 @@ export default function HeroSlot() {
 
               <div className="shell hs-layout">
                 <div className="hs-copy">
-                  <p className="hs-eyebrow">{slide.eyebrow}</p>
+                  {slide.eyebrow && <p className="hs-eyebrow">{slide.eyebrow}</p>}
                   <Heading className="hs-title">
                     <span className="hs-line"><Words text={slide.title} start={0} /></span>{' '}
-                    <span className="hs-line hs-line--accent"><Words text={slide.accent} start={titleWords} /></span>
+                    {slide.accent && <span className="hs-line hs-line--accent"><Words text={slide.accent} start={titleWords} /></span>}
                   </Heading>
                   <p className="hs-body">{slide.body}</p>
                   <div className="hs-actions">

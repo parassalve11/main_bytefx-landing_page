@@ -44,11 +44,11 @@ export function AccountFinder() {
     ['How often you trade', volume, setVolume, [['occasional', 'A few trades a week'], ['active', 'Every trading day'], ['high', 'High volume or Expert Advisors']]],
   ];
   return <section className="mobile-section inner-color-band account-finder-section" id="find-account"><div className="shell">
-    <div className="finder-heading"><p className="eyebrow">Find your account</p><h2 className="h-lg">Your approach.<br />Your starting point.</h2><p className="lede">A few details about how you trade. A clearer place to begin.</p></div>
-    <div className="account-finder"><div className="finder-fields">
+    <div className="account-finder"><div className="finder-input"><div className="finder-heading"><p className="eyebrow">Find your account</p><h2 className="h-lg">Your approach.<br />Your starting point.</h2><p className="lede">A few details about how you trade. A clearer place to begin.</p></div>
+    <div className="finder-fields">
       {fields.map(([label, value, setter, options], index) => <fieldset key={label}><legend><span>0{index + 1}</span>{label}</legend><div className="finder-options">{options.map(([key, text]) => <label key={key} data-selected={value === key}><input type="radio" name={`finder-${index}`} value={key} checked={value === key} onChange={() => setter(key)} /><span>{text}</span></label>)}</div></fieldset>)}
       <p className="inner-note">A guide to the account types, not a suitability assessment or investment advice.</p>
-    </div><div className="finder-result"><Image className="finder-new-art" src="/assets/generated/account-paths.webp" alt="Three crystal account cards on ascending silver steps" width={1100} height={1100} sizes="(max-width: 760px) 80vw, 400px" />
+    </div></div><div className="finder-result"><Image className="finder-new-art" src="/assets/generated/account-paths.webp" alt="Three crystal account cards on ascending silver steps" width={1100} height={1100} sizes="(max-width: 760px) 80vw, 400px" />
       <div className="finder-result__copy" aria-live="polite" aria-atomic="true"><p className="eyebrow">Your account to explore</p><h3>{recommendation.name}</h3><p>{recommendation.summary}</p><dl className="finder-specs"><div><dt>Starting deposit</dt><dd>{recommendation.deposit ? `$${recommendation.deposit.toLocaleString('en-US')}` : 'Tailored'}</dd></div><div><dt>Spread from</dt><dd>{recommendation.id === 'standard' ? '1.9' : recommendation.id === 'pro' ? '1.0' : '0.0'} pips</dd></div></dl></div>
       <div className="finder-actions"><SmartLink className="btn btn--solid" href={recommendation.cta.href}>{recommendation.cta.label}</SmartLink><a className="finder-details" href="#account-options">Compare all account details ↗</a></div>
     </div></div>

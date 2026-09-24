@@ -48,7 +48,7 @@ export default function PartnersPage() {
       <SmartLink href={site.registerUrl} className="btn btn--solid">Sign Up</SmartLink>
     </Reveal></section>
     <section className="band" id="become-ib"><div className="shell inner-split ib-apply">
-      <Reveal><SectionHead eyebrow="Get in touch" title="Want to become" accent="an IB?" body="Define your goals and identify areas where AI can add value to your business." /></Reveal>
+      <Reveal><SectionHead eyebrow="Get in touch" title="Want to become" accent="an IB?" body="Tell us about your business and how you would like to partner with ByteFX." /></Reveal>
       <EnquiryForm subject="ByteFX IB partnership enquiry" fields={fields} title="Your enquiry" submitLabel="Transmit Inquiry" showSubmitIcon={false} consentNotice={<>By submitting, you agree to our <a href={documents[1].href} target="_blank" rel="noopener noreferrer">privacy policy</a> and <a href={documents[0].href} target="_blank" rel="noopener noreferrer">institutional grade security terms</a>.</>} note="Opens a draft in your email app. Review and send it to complete your enquiry." />
     </div></section>
   </main>;

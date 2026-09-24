@@ -1,0 +1,121 @@
+﻿@layer components {
+  /* Theme-aware actions, including contrasting actions on coloured sections. */
+  [data-theme='dark'] .masthead a[href='/partners'] { color: #83bd00; }
+  [data-theme='dark'] :is(.mobile-section, .inner-color-band, .t-account) {
+    --button-bg: #1769c9;
+    --button-hover: #1054a6;
+    --button-ink: #fff;
+    --button-shadow: rgb(0 47 111 / 0.22);
+  }
+  [data-theme='dark'] .contact-body {
+    --button-bg: #ade512;
+    --button-hover: #c2f23c;
+    --button-ink: #132000;
+  }
+  .inner-page .closing { width: 100%; margin: 0; border-radius: 0; }
+
+  /* The global-markets slide now has one clear headline. */
+  .hs-slide[data-layout='center'] .hs-copy { width: min(980px, 100%); }
+  .hs-slide[data-layout='center'] .hs-title { font-size: clamp(40px, min(5.8vw, 10cqh), 88px); letter-spacing: -0.045em; text-wrap: balance; }
+
+  /* WikiFX wordmark with a compact, clickable caption underneath. */
+  .ratings-strip .ratings-strip__item--wikifx { flex-direction: column; gap: 7px; }
+  .ratings-strip .ratings-strip__logo--wikifx { padding: 0; background: transparent; border-radius: 0; }
+  .ratings-strip .ratings-strip__logo--wikifx img { width: 132px; height: auto; max-height: none; }
+  .ratings-strip__profile { color: var(--ink-2); font-size: 11px; line-height: 1.5; text-underline-offset: 3px; }
+  .ratings-strip__item--wikifx:hover .ratings-strip__profile { color: var(--accent); text-decoration: underline; }
+
+  /* Larger comparison cards retain the existing three-account structure. */
+  .account-types-page #account-options .shell { width: min(1320px, calc(100% - 64px)); }
+  .account-types-page .plans { max-width: none; gap: 28px; margin-top: 48px; }
+  .account-types-page .plan { padding: clamp(24px, 2.6vw, 38px); border-radius: 20px; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+  .account-types-page .plan:hover, .account-types-page .plan:focus-within { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 18px 40px rgb(0 0 0 / 0.12); }
+  .account-types-page .plan__name { font-size: 28px; }
+  .account-types-page .plan__desc { font-size: 15px; line-height: 1.7; }
+  .account-types-page .plan__price { padding-block: 24px; }
+  .account-types-page .plan__price strong { font-size: 48px; }
+  .account-types-page .plan__price small { font-size: 11px; letter-spacing: 0.05em; }
+  .account-types-page .plan__specs > div { padding-block: 16px; font-size: 14px; }
+  .account-types-page .plan__title { font-size: clamp(28px, 2.5vw, 36px); }
+  .account-types-page .plan__points { gap: 20px; font-size: 15px; }
+  .account-types-page .plan__tag { padding: 7px 16px; font-size: 11px; }
+  .inner-page .account-finder { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); align-items: center; gap: clamp(32px, 5vw, 72px); }
+  .finder-input { min-width: 0; }
+  .inner-page .finder-heading { margin-bottom: 32px; }
+  .inner-page .finder-heading .h-lg { font-size: clamp(36px, 3.5vw, 52px); }
+  .inner-page .finder-result { padding: 22px 28px 28px; }
+  .inner-page .finder-result .finder-new-art { width: min(100%, 280px); height: 195px; margin: 0 auto 12px; }
+  .inner-page .finder-result__copy { text-align: center; }
+
+  /* Upright phone, intentionally cropped at the feature card's bottom edge. */
+  .inner-page .mobile-feature-main { height: 600px; padding-bottom: 0; overflow: hidden; }
+  .inner-page .mobile-feature-main > div:first-child { flex: none; }
+  .inner-page .mobile-feature-main .iphone-preview { width: 350px; max-width: 100%; margin-top: 28px; transform: none; align-self: center; }
+  .inner-payment-logos { gap: 12px; margin-top: 24px; }
+  .inner-payment-logos li { display: grid; place-items: center; width: 76px; height: 48px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+  .inner-payment-logos img { width: 60px; height: 32px; object-fit: contain; }
+
+  /* Existing platform brand artwork, with explicit device names for access. */
+  .mk-platform .mk-platform__brand { display: flex; align-items: center; gap: 12px; min-height: 68px; margin: 22px 0 12px; font-size: clamp(22px, 2vw, 29px); }
+  .mk-platform__logo { display: grid; place-items: center; flex: none; width: 58px; height: 58px; padding: 8px; border-radius: 14px; background: #fff; }
+  .mk-platform__logo img { width: 100%; height: 100%; object-fit: contain; }
+  .mk-platform__brand--app > img { width: 158px; height: auto; }
+  .mk-platform__brand--app > span { font-size: 24px; }
+  .mk-platform__devices li { display: flex; align-items: center; }
+  .mk-cta .mk-cta__note { font-size: 13px; line-height: 1.7; padding-top: 20px; border-top: 1px solid rgb(255 255 255 / 0.3); }
+
+  /* Heading above a wide market scene, inspired by the supplied reference. */
+  .market-feature { padding-top: clamp(48px, 6vw, 88px); background: radial-gradient(ellipse at 85% 10%, var(--glow), transparent 55%), var(--shell); overflow: hidden; }
+  .market-feature__copy { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: end; gap: 32px; padding-bottom: 34px; }
+  .market-feature__copy h2 { margin: 20px 0; font-size: clamp(40px, 5.3vw, 76px); line-height: 1.06; font-weight: 500; letter-spacing: -0.045em; text-wrap: balance; }
+  .market-feature__copy .lede { max-width: 58ch; }
+  .market-feature__copy > .btn { flex: none; margin-bottom: 8px; }
+  .market-feature__scene { display: block; position: relative; height: clamp(340px, 39vw, 600px); overflow: hidden; }
+  .market-feature__scene img { object-fit: cover; object-position: var(--scene-position); transition: transform 0.6s; }
+  .market-feature__scene::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, var(--shell), transparent 28%); pointer-events: none; }
+  .market-feature__scene:hover img { transform: scale(1.025); }
+  .market-feature__scene:focus-visible { outline: 3px solid var(--accent); outline-offset: -5px; }
+
+  /* Compact company community section. */
+  .about-page #community { padding-block: 40px; }
+  .inner-page .telegram-community { grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.55fr); gap: 40px; }
+  .telegram-community h2 { font-size: clamp(32px, 3.5vw, 48px); }
+  .telegram-community .lede { max-width: 56ch; }
+  .inner-page .telegram-community__visual .band-art { max-width: 260px; margin-inline: auto; }
+  .inner-page .telegram-community__badge { padding: 12px 16px; margin-top: -10px; }
+  .inner-page .telegram-community__badge small { display: none; }
+  .inner-page .community-topics { margin-top: 18px; }
+
+  /* Centred IB enquiry with the requested white submit action. */
+  .partners-page .ib-apply { display: grid; grid-template-columns: minmax(0, 1fr); max-width: 760px; gap: 30px; margin-inline: auto; }
+  .partners-page .ib-apply > div { width: 100%; max-width: none; }
+  .partners-page .ib-apply .section-head { text-align: center; margin-inline: auto; }
+  .partners-page .ib-apply .section-head .lede { margin-inline: auto; max-width: 48ch; }
+  .partners-page .enquiry-form__foot .btn { --button-bg: #fff; --button-hover: #edf2f7; --button-ink: #17212b; --button-shadow: rgb(0 0 0 / 0.08); border: 1px solid var(--line); }
+
+  @media (max-width: 980px) {
+    .account-types-page #account-options .shell { width: calc(100% - 40px); }
+    .account-types-page .plans { gap: 18px; }
+    .account-types-page .plan { padding: 24px 20px; }
+    .account-types-page .plan__specs > div { flex-wrap: wrap; gap: 6px; }
+    .account-types-page .plan__price { flex-wrap: wrap; }
+    .account-types-page .plan__price small { flex-basis: 100%; margin: 6px 0 0; }
+    .market-feature__copy { align-items: start; flex-direction: column; gap: 12px; }
+    .inner-page .account-finder { grid-template-columns: minmax(0, 1fr); }
+    .inner-page .finder-result { width: 100%; max-width: 540px; justify-self: center; }
+  }
+  @media (max-width: 760px) {
+    .hs-slide[data-layout='center'] .hs-title { font-size: clamp(38px, 11vw, 58px); }
+    .account-types-page .plans { max-width: 520px; }
+    .inner-page .mobile-feature-main { height: 580px; }
+    .inner-page .mobile-feature-main .iphone-preview { width: 320px; }
+    .market-feature__scene { height: 360px; }
+    .inner-page .telegram-community { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+    .inner-page .telegram-community__visual { display: none; }
+    .partners-page .ib-apply { width: calc(100% - 32px); }
+    .mk-platform__brand--app > img { width: 145px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .account-types-page .plan:hover, .account-types-page .plan:focus-within, .market-feature__scene:hover img { transform: none; }
+  }
+}

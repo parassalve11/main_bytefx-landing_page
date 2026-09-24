@@ -19,7 +19,7 @@ const included = [
 ];
 
 export default function AccountTypes() {
-  return <main id="main" className="inner-page">
+  return <main id="main" className="inner-page account-types-page">
     <PageSchema page={page} faqs={accountFaqs} />
     <PageHero page={page} />
     <StickySubnav items={sections} />

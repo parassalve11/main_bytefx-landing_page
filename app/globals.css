@@ -37,10 +37,10 @@
   --accent: #ade512;
   --accent-hi: #c2f23c;
   --accent-deep: #bdf32a;
-  --button-bg: #1769c9;
-  --button-hover: #1054a6;
-  --button-ink: #ffffff;
-  --button-shadow: rgb(23 105 201 / 0.22);
+  --button-bg: #ade512;
+  --button-hover: #c2f23c;
+  --button-ink: #132000;
+  --button-shadow: rgb(90 130 5 / 0.18);
 
   /* effects */
   --glow: rgba(173, 229, 18, 0.10);
@@ -70,6 +70,10 @@
   --accent: #1769c9;
   --accent-hi: #1054a6;
   --accent-deep: #1054a6;
+  --button-bg: #1769c9;
+  --button-hover: #1054a6;
+  --button-ink: #ffffff;
+  --button-shadow: rgb(23 105 201 / 0.22);
 
   --glow: rgba(23, 105, 201, 0.10);
   --ring: rgba(23, 105, 201, 0.5);

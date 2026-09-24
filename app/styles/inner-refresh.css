@@ -15,8 +15,7 @@
   --button-shadow: rgb(90 130 5 / .18);
 }
 .inner-page .mobile-section,
-.inner-page .inner-color-band,
-.inner-page .closing {
+.inner-page .inner-color-band {
   border-radius: clamp(32px, 5.5vw, 88px);
   overflow: hidden;
 }
@@ -24,7 +23,7 @@
 .inner-page .inner-color-band { margin-inline: clamp(12px, 2.2vw, 36px); }
 .inner-page .mobile-section > .shell { width: min(1160px, calc(100% - 64px)); }
 .inner-page .inner-color-band { margin-block: 24px; }
-.inner-page .closing { margin: 24px clamp(12px, 2.2vw, 36px); }
+.inner-page .closing { margin: 0; border-radius: 0; }
 .inner-page .btn--solid { white-space: normal; text-align: center; }
 .inner-page .btn--solid:focus-visible { outline-color: var(--ink); }
 

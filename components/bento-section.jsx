@@ -69,7 +69,7 @@ export default function BentoSection() {
               <p className="eyebrow">{refer.eyebrow}</p>
               <h3 className="h-sm">{refer.title}</h3>
               <p className="lede">{refer.body}</p>
-              <SmartLink href={refer.cta.href} className="btn btn--ghost btn--sm">
+              <SmartLink href={refer.cta.href} className="btn btn--solid btn--sm">
                 {refer.cta.label}
                 <Icon name="arrow" size={16} />
               </SmartLink>
