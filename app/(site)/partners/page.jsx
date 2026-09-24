@@ -22,7 +22,7 @@ export default function PartnersPage() {
       <div className="partner-hero__grid">
         <Reveal className="partner-hero__copy">
           <p className="eyebrow">{page.eyebrow}</p>
-          <h1 id="partner-title">Grow your income<br /><span className="tint">by referring clients</span><br />to ByteFX Capital Ltd.</h1>
+          <h1 id="partner-title">Grow your income<br /><span className="tint">by referring clients.</span></h1>
           <p className="lede">{page.description}</p>
           <div className="partner-hero__actions"><SmartLink href={site.registerUrl} className="btn btn--solid">Know More</SmartLink><a href="#become-ib" className="partner-text-link">Want to become an IB? <span aria-hidden="true">↗</span></a></div>
         </Reveal>
@@ -48,8 +48,8 @@ export default function PartnersPage() {
       <SmartLink href={site.registerUrl} className="btn btn--solid">Sign Up</SmartLink>
     </Reveal></section>
     <section className="band" id="become-ib"><div className="shell inner-split ib-apply">
-      <Reveal><SectionHead eyebrow="Get in touch" title="Want to become" accent="an IB?" body="Tell us about your business and how you would like to partner with ByteFX." /></Reveal>
-      <EnquiryForm subject="ByteFX IB partnership enquiry" fields={fields} title="Your enquiry" submitLabel="Transmit Inquiry" showSubmitIcon={false} consentNotice={<>By submitting, you agree to our <a href={documents[1].href} target="_blank" rel="noopener noreferrer">privacy policy</a> and <a href={documents[0].href} target="_blank" rel="noopener noreferrer">institutional grade security terms</a>.</>} note="Opens a draft in your email app. Review and send it to complete your enquiry." />
+      <Reveal><SectionHead eyebrow="Get in touch" title="Want to become" accent="an IB?" body="Tell us about your business and how you would like to partner with us." /></Reveal>
+      <EnquiryForm subject="IB partnership enquiry" fields={fields} title="Your enquiry" submitLabel="Transmit Inquiry" showSubmitIcon={false} consentNotice={<>By submitting, you agree to our <a href={documents[1].href} target="_blank" rel="noopener noreferrer">privacy policy</a> and <a href={documents[0].href} target="_blank" rel="noopener noreferrer">institutional grade security terms</a>.</>} note="Opens a draft in your email app. Review and send it to complete your enquiry." />
     </div></section>
   </main>;
 }

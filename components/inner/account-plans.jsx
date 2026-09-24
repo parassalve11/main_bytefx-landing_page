@@ -29,7 +29,6 @@ export default function AccountPlans() {
       <div className="plans">
         <div className="plan-slot"><PricedPlan account={standard} /></div>
         <div className="plan-slot plan-frame plan-frame--featured">
-          <span className="plan__tag">{pro.tag}</span>
           <PricedPlan account={pro} />
         </div>
         <div className="plan-slot plan-frame">

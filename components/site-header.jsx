@@ -321,7 +321,7 @@ export default function SiteHeader() {
               >
                 <p className="h-sm">Trade on mobile</p>
                 <p className="lede" style={{ fontSize: 13, marginTop: 6 }}>
-                  {site.mobileAppUrl ? `Scan to install the ${site.name} app.` : 'The ByteFX mobile app is on its way.'}
+                  {site.mobileAppUrl ? 'Scan to install the app.' : 'The mobile app is on its way.'}
                 </p>
                 {site.mobileAppUrl ? (
                   <div className="qr-frame">

@@ -1,23 +1,12 @@
-﻿'use client';
-
 import Image from 'next/image';
 import ThemedImage from '@/components/themed-image';
 import { artwork } from '@/lib/artwork';
-import { useRef, useState } from 'react';
-import { platformOptions } from '@/lib/platforms';
+import { mt5Downloads } from '@/lib/pages/company';
+import Icon from './icon';
 import Reveal from './reveal';
 import PlatformLights from './platform-lights';
 
 export default function PlatformsSection() {
-  const [selected,setSelected] = useState(0);
-  const tabs = useRef([]);
-  const platform = platformOptions[selected];
-  const count = platformOptions.length;
-  const onKey = (event,index) => {
-    const keys={ArrowRight:(index+1)%count,ArrowLeft:(index+count-1)%count,Home:0,End:count-1};
-    if (!(event.key in keys)) return;
-    event.preventDefault();setSelected(keys[event.key]);tabs.current[keys[event.key]]?.focus();
-  };
   return (
     <section className="platform-guide band" id="platform-guide" aria-labelledby="platform-guide-title">
       <PlatformLights />
@@ -28,15 +17,21 @@ export default function PlatformsSection() {
           <p className="lede">A bigger picture at your desk. A closer connection on the move. Explore the tools that fit the way you trade.</p>
         </Reveal>
         <Reveal className="platform-stage">
-          <ThemedImage src={artwork.platforms.dark} light={artwork.platforms.light} frameRatio="3 / 2" alt="ByteFX trading charts on a laptop, withdrawals on a tablet, and the mobile trading app on a phone" width={1536} height={1024} sizes="(max-width: 760px) 100vw, (max-width: 1148px) 96vw, 1100px" />
+          <ThemedImage src={artwork.platforms.dark} light={artwork.platforms.light} frameRatio="3 / 2" alt="Trading charts on a laptop, withdrawals on a tablet, and the mobile trading app on a phone" width={1536} height={1024} sizes="(max-width: 760px) 100vw, (max-width: 1148px) 96vw, 1100px" />
         </Reveal>
-        <Reveal className="platform-guide__selector">
-          <div className="platform-tabs" role="tablist" aria-label="Trading platforms">
-            {platformOptions.map((item,index)=><button type="button" role="tab" key={item.id} id={`platform-tab-${item.id}`} ref={el=>{tabs.current[index]=el;}} aria-controls="platform-details" aria-selected={index===selected} tabIndex={index===selected?0:-1} onClick={()=>setSelected(index)} onKeyDown={event=>onKey(event,index)} aria-label={item.name}><span className={`platform-logo platform-logo--${item.id}`}><Image src={item.logo} alt="" width={80} height={80} /></span><span>{item.name}</span></button>)}
+        <Reveal className="platform-mt5">
+          <div className="platform-mt5__mark">
+            <span className="platform-mt5__icon"><Image src="/assets/platforms/mt5-icon.png" alt="" width={96} height={96} /></span>
+            <h3 className="platform-mt5__name">MetaTrader 5</h3>
           </div>
-          <div id="platform-details" role="tabpanel" aria-labelledby={`platform-tab-${platform.id}`} tabIndex={0} className="platform-detail">
-            <p className="platform-detail__copy lede" key={platform.id}>{platform.body}</p>
-          </div>
+          <p className="platform-mt5__body">Multi-asset charting, flexible order types and Expert Advisors. Analyse, test and trade from one platform, at your desk or on the move.</p>
+          <ul className="platform-mt5__get" aria-label="Get MetaTrader 5">
+            {mt5Downloads.map(([icon, label, href]) => (
+              <li key={label}>
+                <a href={href} target="_blank" rel="noopener noreferrer"><Icon name={icon} size={15} /><span>{label}</span></a>
+              </li>
+            ))}
+          </ul>
         </Reveal>
       </div>
     </section>

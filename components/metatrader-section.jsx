@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Mt5Emblem from './mt5-emblem';
 
 export default function MetaTraderSection() {
   return (
@@ -18,18 +19,7 @@ export default function MetaTraderSection() {
             your strategy in one powerful trading environment.
           </p>
         </div>
-        <figure className="mt5-art">
-          <Image
-            src="/assets/platforms/mt5/emblem.webp"
-            alt="Glossy green, gold and blue MetaTrader 5 emblem with a gold 5"
-            width={1600}
-            height={1600}
-            sizes="(max-width: 760px) 85vw, (max-width: 980px) 480px, (max-width: 1600px) 44vw, 680px"
-          />
-          <div className="mt5-art__reflection" aria-hidden="true">
-            <Image src="/assets/platforms/mt5/emblem.webp" alt="" width={1600} height={1600} sizes="(max-width: 760px) 85vw, (max-width: 980px) 480px, (max-width: 1600px) 44vw, 680px" />
-          </div>
-        </figure>
+        <Mt5Emblem />
       </div>
     </section>
   );

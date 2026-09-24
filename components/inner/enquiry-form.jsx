@@ -4,7 +4,8 @@ import { useId, useState } from 'react';
 import Icon from '@/components/icon';
 import { site } from '@/lib/content';
 
-/* The site has no enquiry endpoint. Prepare an email without claiming delivery. */
+/* The site has no enquiry endpoint. Prepare an email without claiming delivery.
+   A select field can be controlled by passing `value` and `onChange` on it. */
 export default function EnquiryForm({ subject, fields, submitLabel = 'Prepare email enquiry', note, title, description, consent, consentNotice, showSubmitIcon = true }) {
   const id = useId();
   const [errors, setErrors] = useState({});
@@ -55,7 +56,7 @@ export default function EnquiryForm({ subject, fields, submitLabel = 'Prepare em
     };
     return <div key={field.name} className={`enquiry-field${field.wide ? ' is-wide' : ''}`}>
       <label htmlFor={fieldId}>{field.label}{field.required ? <span className="enquiry-required" aria-hidden="true"> *</span> : <small> (optional)</small>}</label>
-      {field.type === 'textarea' ? <textarea {...props} rows={4} /> : field.type === 'select' ? <select {...props} defaultValue=""><option value="" disabled>Choose an option</option>{field.options.map((option) => <option key={option} value={option}>{option}</option>)}</select> : <input {...props} type={field.type || 'text'} />}
+      {field.type === 'textarea' ? <textarea {...props} rows={4} /> : field.type === 'select' ? <select {...props} {...(field.value !== undefined ? { value: field.value, onChange: (event) => field.onChange?.(event.target.value) } : { defaultValue: '' })}><option value="" disabled>Choose an option</option>{field.options.map((option) => <option key={option} value={option}>{option}</option>)}</select> : <input {...props} type={field.type || 'text'} />}
       {field.help && <small id={`${fieldId}-help`} className="enquiry-help">{field.help}</small>}
       {errors[field.name] && <p id={`${fieldId}-error`} className="enquiry-error">{errors[field.name]}</p>}
     </div>;

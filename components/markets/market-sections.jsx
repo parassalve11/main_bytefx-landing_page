@@ -1,10 +1,10 @@
-import Image from 'next/image';
 import ThemedImage from '@/components/themed-image';
 import Icon from '@/components/icon';
 import SmartLink from '@/components/smart-link';
-import { Breadcrumbs, SectionHead } from '@/components/inner/page-kit';
+import { Breadcrumbs } from '@/components/inner/page-kit';
 import { site } from '@/lib/content';
 import { markets } from '@/lib/pages/markets';
+import { StoreBadge } from '@/components/mobile-section';
 import MarketTabs from './market-tabs';
 import PriceTable from './price-table';
 
@@ -80,7 +80,7 @@ export function MarketSwitch({ current }) {
     <section className="band mk-switch" aria-labelledby="mk-switch-title">
       <div className="shell">
         <p className="eyebrow">Our markets</p>
-        <h2 className="mk-switch__title" id="mk-switch-title">At ByteFX, 150+ instruments across forex, crypto, stocks, commodities, indices and energy, all on MetaTrader 5.</h2>
+        <h2 className="mk-switch__title" id="mk-switch-title">150+ instruments across forex, crypto, stocks, commodities, indices and energy, all on MetaTrader 5.</h2>
         <nav className="mk-switch__nav" aria-label="Markets">
           {markets.map((market) => (
             <SmartLink key={market.id} href={`/markets/${market.id}`} aria-current={market.id === current ? 'page' : undefined}>
@@ -136,37 +136,31 @@ export function MarketTopics({ market }) {
   );
 }
 
-const platforms = [
-  { id: 'mt5', tag: 'Recommended', name: 'MetaTrader 5', body: 'Multi-asset analysis, trading tools and algorithmic strategies.', logo: '/assets/platforms/mt5-icon.png', devices: ['windows', 'apple', 'android', 'globe'], href: 'https://www.metatrader5.com/en', link: 'Explore MetaTrader 5' },
-  { id: 'tradingview', tag: 'Charts', name: 'TradingView', body: 'Interactive charts, custom indicators and trading ideas.', logo: '/assets/platforms/tradingview.png', devices: ['windows', 'apple', 'android', 'globe'], href: 'https://www.tradingview.com/features/', link: 'Explore TradingView' },
-  { id: 'app', tag: 'Mobile', name: 'ByteFX app', body: 'Your account, funding and the markets in one app.', devices: ['android', 'apple'], href: '/trading/mobile-app', link: 'Get the app' },
-];
-
+/* Get the app: the same store badges as the landing page's mobile section,
+   on the page's own background and without artwork. */
 export function MarketPlatforms() {
   return (
     <section className="band mk-platforms" aria-labelledby="mk-platforms-title">
       <div className="shell">
-        <SectionHead eyebrow="Trading platforms" title="Trade on" accent="any device." className="mk-platforms__head" />
-        <ul className="mk-platforms__grid">
-          {platforms.map((item) => (
-            <li key={item.id} className="mk-platform" data-featured={item.id === 'mt5' || undefined}>
-              <span className="mk-platform__tag">{item.tag}</span>
-              <h3 className={`h-md mk-platform__brand mk-platform__brand--${item.id}`}>{item.id === 'app' ? <><Image src="/assets/logo/bytefx.png" alt="ByteFX" width={384} height={82} /><span>app</span></> : <><span className="mk-platform__logo"><Image src={item.logo} alt="" width={64} height={64} /></span><span>{item.name}</span></>}</h3>
-              <p className="lede">{item.body}</p>
-              <ul className="mk-platform__devices" aria-label="Supported devices">{item.devices.map((device) => <li key={device} title={{ windows: 'Windows', apple: 'Apple', android: 'Android', globe: 'Web' }[device]}><Icon name={device} size={18} /><span className="sr-only">{{ windows: 'Windows', apple: 'Apple', android: 'Android', globe: 'Web' }[device]}</span></li>)}</ul>
-              <SmartLink className="mk-platform__link" href={item.href} {...(item.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{item.link}<Icon name="arrow" size={14} /></SmartLink>
-            </li>
-          ))}
-        </ul>
+        <div className="section-head inner-section-head section-head--center mk-platforms__head">
+          <p className="eyebrow">Trading platforms</p>
+          <h2 className="h-lg" id="mk-platforms-title">Trade on <span className="tint">any device.</span></h2>
+          <p className="lede">Your account, funding and the markets in one app. Download it for your phone and pick up where you left off on desktop.</p>
+        </div>
+        <div className="mk-platforms__stores">
+          <StoreBadge apple />
+          <StoreBadge />
+        </div>
       </div>
     </section>
   );
 }
 
-/* The page's colour band: green in dark mode, blue in light. */
+/* The market pages' closing band runs the other way round from the rest of
+   the site: green in light mode, blue in dark (see .band-invert). */
 export function MarketCta({ market }) {
   return (
-    <section className="mobile-section inner-color-band mk-cta" aria-labelledby="mk-cta-title">
+    <section className="mobile-section inner-color-band band-invert mk-cta" aria-labelledby="mk-cta-title">
       <div className="shell mk-cta__grid">
         <div>
           <p className="eyebrow">Open your account</p>
@@ -178,10 +172,9 @@ export function MarketCta({ market }) {
           </div>
         </div>
         <div className="mk-cta__stat">
-          <strong>1:2000<sup>*</sup></strong>
-          <span>Leverage up to</span>
+          <strong>1:2000</strong>
+          <span>Maximum leverage is dependent on market volatility.</span>
         </div>
-        <p className="inner-note mk-cta__note">*</p>
       </div>
     </section>
   );

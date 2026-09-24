@@ -94,7 +94,7 @@ export default function PriceTable({ market, name, rows, quotes, tradeHref }) {
       </div>
       <p className="mk-table-status" data-status={state.status}>
         {state.status === 'stale' ? 'Showing the last prices we received. ' : ''}
-        {time ? `Last update ${time}. ` : ''}Indicative prices from Yahoo Finance, refreshed every 15 seconds. Not ByteFX dealing prices; commodity and energy rows use futures prices.
+        {time ? `Last update ${time}. ` : ''}Indicative prices from Yahoo Finance, refreshed every 15 seconds. Not our dealing prices; commodity and energy rows use futures prices.
       </p>
     </div>
   );

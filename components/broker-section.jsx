@@ -103,9 +103,9 @@ export default function BrokerSection() {
           {[...broker.cards, ...broker.cards].map((card, index) => (
             <li key={`${card.id}-${index}`} className={`stat${index >= broker.cards.length ? ' stat--echo' : ''}`} aria-hidden={index >= broker.cards.length ? 'true' : undefined}>
               <h3>{card.title}</h3>
-              <figure>
+              <figure data-art={card.lightImage ? 'framed' : undefined}>
                 <Image src={card.image} className="stat__art--dark" alt={card.alt} width={768} height={768} sizes="(max-width: 760px) 70vw, 292px" draggable={false} />
-                <Image src={`/assets/broker/sculptures/blue/${card.id}.webp`} className="stat__art--light" alt={card.alt.replaceAll('lime', 'blue')} width={768} height={768} sizes="(max-width: 760px) 70vw, 292px" draggable={false} />
+                <Image src={card.lightImage ?? `/assets/broker/sculptures/blue/${card.id}.webp`} className="stat__art--light" alt={card.alt.replaceAll('lime', 'blue')} width={768} height={768} sizes="(max-width: 760px) 70vw, 292px" draggable={false} />
               </figure>
               <p className="stat__value">{card.value}</p><p className="stat__note">{card.note}</p>
             </li>

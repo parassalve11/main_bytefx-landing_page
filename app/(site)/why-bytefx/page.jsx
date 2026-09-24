@@ -14,7 +14,7 @@ export default function WhyPage() {
     <PageSchema page={page} />
     <PageHero page={page} />
     <section className="band" id="reasons"><div className="shell">
-      <SectionHead eyebrow="Six reasons" title="Why traders" accent="choose ByteFX." />
+      <SectionHead eyebrow="Six reasons" title="Why traders" accent="choose us." />
       <IconGrid items={reasons} />
     </div></section>
     <MarketFeature src="/assets/hero/hero-precious-metals.webp" alt="Gold and silver bars wrapped in a flowing ribbon of gold" eyebrow="Gold and silver" title="Trade the metals" accent="that move markets" body="Access spot gold and silver alongside the most-watched currency pairs, with tight spreads and fast execution." href="/markets/commodities" linkLabel="Explore metals" position="65% 55%" />
@@ -32,6 +32,6 @@ export default function WhyPage() {
       <ul className="speed-list">{withdrawalSpeeds.map(([logo, name, time]) => <li key={name}><span className="payment-mark"><Image src={`/assets/payments/${logo}.svg`} alt="" width={72} height={44} /></span><strong>{name}</strong><span>{time}</span></li>)}</ul>
     </div></section>
     <StartSteps />
-    <ClosingSection title="Better conditions." accent="Built for your strategy." lead="Open your ByteFX account in minutes, from $20." primary={{ label: 'Open your account', href: site.registerUrl }} secondary={{ label: 'Compare accounts', href: '/trading/account-types' }} />
+    <ClosingSection title="Better conditions." accent="Built for your strategy." lead="Open your account in minutes, from $20." primary={{ label: 'Open your account', href: site.registerUrl }} secondary={{ label: 'Compare accounts', href: '/trading/account-types' }} />
   </main>;
 }

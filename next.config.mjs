@@ -10,6 +10,10 @@ const nextConfig = {
       { source: '/trading/demo-account', destination: '/trading/account-types', permanent: false },
       /* bytefx.com/tools has no page of its own; send it to the tools overview. */
       { source: '/tools', destination: '/markets#tools', permanent: false },
+      /* Trust & security and Legal & compliance were retired. The policy PDFs
+         stay linked from the footer; old links land on About. */
+      { source: '/trust-security', destination: '/about', permanent: false },
+      { source: '/legal', destination: '/about', permanent: false },
     ];
   },
 };

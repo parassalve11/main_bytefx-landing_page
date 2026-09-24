@@ -22,7 +22,7 @@ export function FundingExplorer() {
             {['All', 'Cards', 'Wallet', 'Crypto', 'Bank', 'Local'].map(value => <button type="button" key={value} aria-pressed={category === value} onClick={() => setCategory(value)}>{value}</button>)}
           </div>
         </div>
-        <p className="inner-note funding-status" role="status">{methods.length} {methods.length === 1 ? 'method' : 'methods'} · Processing times as published by ByteFX. Limits marked TBC (to be confirmed) are not published yet.</p>
+        <p className="inner-note funding-status" role="status">{methods.length} {methods.length === 1 ? 'method' : 'methods'} · Processing times as published. Limits marked TBC (to be confirmed) are not published yet.</p>
         <div className="funding-table-wrap">
           <table className="funding-table">
             <caption className="sr-only">{direction === 'deposit' ? 'Deposit' : 'Withdrawal'} methods and proposed payment information</caption>
@@ -77,7 +77,7 @@ export function SetupStory() {
       <Image className="setup-step__mobile-art" src={step.art} alt={step.alt} width={1100} height={1100} sizes="(max-width: 760px) 85vw, 1px" />
       <ul>{step.needs.map(need => <li key={need}>{need}</li>)}</ul><p className="inner-note">{step.tip}</p>
       <Actions primary={step.action} />
-      <a className="guide-tutorial" href="https://www.youtube.com/@ByteFXcapital" target="_blank" rel="noopener noreferrer">ByteFX video tutorials <span aria-hidden="true">↗</span></a>
+      <a className="guide-tutorial" href="https://www.youtube.com/@ByteFXcapital" target="_blank" rel="noopener noreferrer">Video tutorials <span aria-hidden="true">↗</span></a>
     </article>)}</div>
   </div></section>;
 }

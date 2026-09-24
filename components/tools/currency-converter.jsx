@@ -74,7 +74,7 @@ export default function CurrencyConverter() {
         ))}
       </div>
 
-      <p className="tool-status" data-status={rateState.status}>{updatedLabel(rateState)} Reference rates are for information only and are not ByteFX dealing prices.</p>
+      <p className="tool-status" data-status={rateState.status}>{updatedLabel(rateState)} Reference rates are for information only and are not our dealing prices.</p>
     </div>
   );
 }

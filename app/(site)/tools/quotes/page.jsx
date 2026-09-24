@@ -13,7 +13,7 @@ export default function MarketQuotesPage() {
   return (
     <main id="main" className="inner-page tool-page">
       <PageSchema page={toolPage(tool)} />
-      <ToolHero tool={tool} layout="wide" note="Reference prices from TradingView. Your ByteFX dealing prices and the full symbol list are in MetaTrader 5.">
+      <ToolHero tool={tool} layout="wide" note="Reference prices from TradingView. Our dealing prices and the full symbol list are in MetaTrader 5.">
         <TvWidget widget="market-quotes" height={620} label="Market quotes" className="tv-frame--panel" config={{ symbolsGroups: quoteGroups(markets.map(({ name, quotes }) => ({ name, quotes }))), showSymbolLogo: true }} />
       </ToolHero>
       <MoreTools current={tool.id} />

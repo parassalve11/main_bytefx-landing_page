@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { accounts } from '@/lib/accounts';
 import SmartLink from '@/components/smart-link';
+import Icon from '@/components/icon';
 import { SectionHead } from './page-kit';
 import IPhonePreview from './iphone-preview';
 
@@ -32,32 +33,71 @@ export function StickySubnav({ items }) {
   }, [items]);
   return <nav className="inner-subnav" aria-label="On this page"><div className="shell">{items.map(([id, label]) => <a key={id} href={`#${id}`} aria-current={active === id ? 'location' : undefined}>{label}</a>)}</div></nav>;
 }
+const depositChoices = [['starter', '$20 – $1,999'], ['growth', '$2,000 or more']];
+const paceChoices = [['occasional', 'A few trades a week'], ['active', 'Every trading day'], ['high', 'High volume or Expert Advisors']];
+const specOf = (account, label) => account.specs?.find(([name]) => name === label)?.[1];
+
+/* Two choices, one answer beside them. The starting deposit decides the
+   account: $2,000 or more is Pro, anything less is Standard. Trading at
+   volume adds a pointer to the Custom plan. */
 export function AccountFinder() {
-  const [experience, setExperience] = useState('new');
   const [deposit, setDeposit] = useState('starter');
-  const [volume, setVolume] = useState('occasional');
+  const [pace, setPace] = useState('occasional');
   const [standard, pro, custom] = accounts;
-  const recommendation = experience === 'experienced' && volume === 'high' ? custom : experience === 'experienced' && deposit === 'growth' ? pro : standard;
-  const fields = [
-    ['Experience', experience, setExperience, [['new', 'I’m getting started'], ['experienced', 'I already trade']]],
-    ['Starting deposit', deposit, setDeposit, [['starter', '$20 – $1,999'], ['growth', '$2,000 or more']]],
-    ['How often you trade', volume, setVolume, [['occasional', 'A few trades a week'], ['active', 'Every trading day'], ['high', 'High volume or Expert Advisors']]],
+  const tiers = [standard, pro, custom];
+  const account = deposit === 'growth' ? pro : standard;
+  const showCustom = pace === 'high';
+  const swapFree = specOf(account, 'Swap-free support');
+  const specs = [
+    ['Starting deposit', specOf(account, 'Min. deposit')],
+    ['Spread from', specOf(account, 'Spread from')],
+    ['Commission', specOf(account, 'Commission')],
+    ['Swap-free', swapFree ? 'Available' : 'Not included'],
   ];
-  return <section className="mobile-section inner-color-band account-finder-section" id="find-account"><div className="shell">
-    <div className="account-finder"><div className="finder-input"><div className="finder-heading"><p className="eyebrow">Find your account</p><h2 className="h-lg">Your approach.<br />Your starting point.</h2><p className="lede">A few details about how you trade. A clearer place to begin.</p></div>
-    <div className="finder-fields">
-      {fields.map(([label, value, setter, options], index) => <fieldset key={label}><legend><span>0{index + 1}</span>{label}</legend><div className="finder-options">{options.map(([key, text]) => <label key={key} data-selected={value === key}><input type="radio" name={`finder-${index}`} value={key} checked={value === key} onChange={() => setter(key)} /><span>{text}</span></label>)}</div></fieldset>)}
-      <p className="inner-note">A guide to the account types, not a suitability assessment or investment advice.</p>
-    </div></div><div className="finder-result"><Image className="finder-new-art" src="/assets/generated/account-paths.webp" alt="Three crystal account cards on ascending silver steps" width={1100} height={1100} sizes="(max-width: 760px) 80vw, 400px" />
-      <div className="finder-result__copy" aria-live="polite" aria-atomic="true"><p className="eyebrow">Your account to explore</p><h3>{recommendation.name}</h3><p>{recommendation.summary}</p><dl className="finder-specs"><div><dt>Starting deposit</dt><dd>{recommendation.deposit ? `$${recommendation.deposit.toLocaleString('en-US')}` : 'Tailored'}</dd></div><div><dt>Spread from</dt><dd>{recommendation.id === 'standard' ? '1.9' : recommendation.id === 'pro' ? '1.0' : '0.0'} pips</dd></div></dl></div>
-      <div className="finder-actions"><SmartLink className="btn btn--solid" href={recommendation.cta.href}>{recommendation.cta.label}</SmartLink><a className="finder-details" href="#account-options">Compare all account details ↗</a></div>
-    </div></div>
+  const questions = [
+    ['finder-deposit', 'Starting deposit', deposit, setDeposit, depositChoices],
+    ['finder-pace', 'How often you trade', pace, setPace, paceChoices],
+  ];
+  return <section className="mobile-section inner-color-band band-invert finder-band" id="find-account" aria-labelledby="finder-title"><div className="shell finder">
+    <div className="finder__ask">
+      <p className="eyebrow">Find your account</p>
+      <h2 className="h-lg" id="finder-title">Your approach.<br />Your starting point.</h2>
+      <p className="lede">Two quick choices. The account that fits appears beside them.</p>
+      {questions.map(([name, label, value, setter, options]) => <fieldset className="finder__question" key={name}>
+        <legend>{label}</legend>
+        <div className="finder__choices" data-count={options.length}>
+          {options.map(([key, text]) => <label key={key} data-selected={value === key}>
+            <input type="radio" name={name} value={key} checked={value === key} onChange={() => setter(key)} />
+            <span>{text}</span>
+          </label>)}
+        </div>
+      </fieldset>)}
+      <p className="inner-note finder__disclaimer">A guide to the account types, not a suitability assessment or investment advice.</p>
+    </div>
+    <div className="finder__answer">
+      <ol className="finder__tiers" style={{ '--tier': tiers.indexOf(account) }} aria-label="Account types, from entry level to tailored">
+        {tiers.map((tier) => <li key={tier.id} data-state={tier === account ? 'active' : tier === custom && showCustom ? 'hint' : undefined} aria-current={tier === account ? 'true' : undefined}>{tier.name}</li>)}
+      </ol>
+      <div className="finder__pick" aria-live="polite" aria-atomic="true">
+        <p className="finder__kicker">Your account to explore</p>
+        <h3 key={account.id}>{account.name}</h3>
+        <p className="finder__summary">{account.summary}</p>
+      </div>
+      <dl className="finder__specs">{specs.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+      <p className="finder__custom" data-open={showCustom} aria-hidden={!showCustom}>
+        Trading at volume or running Expert Advisors? <a href="#account-options" tabIndex={showCustom ? undefined : -1}>{custom.name}</a> brings raw spreads from 0.0 pips with an $8 round-turn commission.
+      </p>
+      <div className="finder__actions">
+        <SmartLink className="btn btn--solid" href={account.cta.href}>Open a {account.name} account<Icon name="arrow" size={15} /></SmartLink>
+        <a className="finder__compare" href="#account-options">Compare all account details</a>
+      </div>
+    </div>
   </div></section>;
 }
 const tourScreens = [
   ['Home', '/assets/mobile/bytefx-account.png', 'Your account, at a glance.', 'Your balance, your accounts and your funding controls. All together, ready when you are.'],
   ['Trade', '/assets/mobile/bytefx-chart.png', 'Your next move, in focus.', 'Follow the chart, review your order and keep your trading plan close.'],
-  ['Tournaments', '/assets/mobile/tournaments-screen.png', 'Your skill sets the pace.', 'Explore ByteFX trading tournaments, see the prize pool and find your next challenge.'],
+  ['Tournaments', '/assets/mobile/tournaments-screen.png', 'Your skill sets the pace.', 'Explore trading tournaments, see the prize pool and find your next challenge.'],
 ];
 export function AppTour() {
   const [active, setActive] = useState(0);

@@ -14,6 +14,7 @@ import './styles/markets-tools.css';
 import './styles/market-pages.css';
 import './styles/site-refinements.css';
 import './styles/asset-variants.css';
+import './styles/client-updates.css';
 
 export const metadata = {
   title: 'ByteFX — Trade with a global broker',

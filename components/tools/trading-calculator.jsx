@@ -132,7 +132,7 @@ export default function TradingCalculator({ initialSymbol = 'EURUSD' }) {
 
       <p className="tool-status" data-status={rateState.status}>
         1 lot = {count(instrument.contract)} {unitName}. 1 pip = a {count(instrument.pip)} price move. {updatedLabel(rateState)}
-        {!specsConfirmed && ' Contract sizes are standard MetaTrader 5 values until ByteFX publishes its own specifications; check the symbol specification in MetaTrader 5 before you trade.'}
+        {!specsConfirmed && ' Contract sizes are standard MetaTrader 5 values until our own specifications are published; check the symbol specification in MetaTrader 5 before you trade.'}
       </p>
     </div>
   );

@@ -27,6 +27,6 @@ export default function MarketsPage() {
     </div></section>
     <StartSteps />
     <FAQ items={marketsFaqs} title="Markets, explained." />
-    <ClosingSection title="Pick a market." accent="Make your move." lead="150+ instruments, six markets, one ByteFX account." primary={{ label: 'Open your account', href: site.registerUrl }} secondary={{ label: 'Compare accounts', href: '/trading/account-types' }} />
+    <ClosingSection title="Pick a market." accent="Make your move." lead="150+ instruments, six markets, one account." primary={{ label: 'Open your account', href: site.registerUrl }} secondary={{ label: 'Compare accounts', href: '/trading/account-types' }} />
   </main>;
 }
