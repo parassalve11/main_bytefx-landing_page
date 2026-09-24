@@ -11,7 +11,6 @@ export default function BrokerSection() {
   const drag = useRef({ active: false, startX: 0, startScroll: 0 });
   const interaction = useRef({ focused: false, until: 0 });
   const [dragging, setDragging] = useState(false);
-  const [paused, setPaused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
 
   const loopWidth = useCallback(() => {
@@ -30,7 +29,7 @@ export default function BrokerSection() {
 
   useEffect(() => {
     const el = rail.current;
-    if (!el || paused || reducedMotion) return undefined;
+    if (!el || reducedMotion) return undefined;
     let frame = 0;
     let previous = 0;
     let position = el.scrollLeft;
@@ -54,7 +53,7 @@ export default function BrokerSection() {
     };
     frame = requestAnimationFrame(animate);
     return () => { cancelAnimationFrame(frame); observer.disconnect(); };
-  }, [paused, reducedMotion, loopWidth]);
+  }, [reducedMotion, loopWidth]);
 
   const hold = () => { interaction.current.until = performance.now() + 5000; };
   const step = (direction) => {
@@ -117,7 +116,6 @@ export default function BrokerSection() {
         <Icon name="drag" size={17} /><span>Drag to explore</span>
         <div className="rail-nav">
           <button type="button" onClick={() => step(-1)} aria-label="Previous broker card" aria-controls="broker-cards"><Icon name="back" size={16} /></button>
-          {!reducedMotion && <button className="rail-pause" type="button" onClick={() => setPaused(!paused)} aria-label={paused ? 'Resume broker cards' : 'Pause broker cards'} aria-pressed={paused} aria-controls="broker-cards">{paused ? 'Play' : 'Pause'}</button>}
           <button type="button" onClick={() => step(1)} aria-label="Next broker card" aria-controls="broker-cards"><Icon name="arrow" size={16} /></button>
         </div>
       </div></div>

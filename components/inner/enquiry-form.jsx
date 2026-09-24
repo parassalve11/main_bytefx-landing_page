@@ -5,7 +5,7 @@ import Icon from '@/components/icon';
 import { site } from '@/lib/content';
 
 /* The site has no enquiry endpoint. Prepare an email without claiming delivery. */
-export default function EnquiryForm({ subject, fields, submitLabel = 'Prepare email enquiry', note, title, description, consent }) {
+export default function EnquiryForm({ subject, fields, submitLabel = 'Prepare email enquiry', note, title, description, consent, consentNotice, showSubmitIcon = true }) {
   const id = useId();
   const [errors, setErrors] = useState({});
   const [prepared, setPrepared] = useState(null);
@@ -66,7 +66,8 @@ export default function EnquiryForm({ subject, fields, submitLabel = 'Prepare em
     {groups.map((group, index) => <fieldset className="enquiry-form__group" key={group}>{group && <legend><span>0{index + 1}</span>{group}</legend>}<div className="enquiry-form__fields">{fields.filter((field) => (field.group || '') === group).map(renderField)}</div></fieldset>)}
     {consent && <div className="enquiry-consent"><label><input type="checkbox" name="consent" required aria-invalid={Boolean(errors.consent)} aria-describedby={errors.consent ? `${id}-consent-error` : undefined} /><span>{consent}</span></label>{errors.consent && <p className="enquiry-error" id={`${id}-consent-error`}>{errors.consent}</p>}</div>}
     <div className="enquiry-form__foot">
-      <button className="btn btn--solid" type="submit">{submitLabel}<Icon name="arrow" size={15} /></button>
+      <button className="btn btn--solid" type="submit">{submitLabel}{showSubmitIcon && <Icon name="arrow" size={15} />}</button>
+      {consentNotice && <p className="enquiry-consent-notice">{consentNotice}</p>}
       <p className="inner-note">{note}</p>
     </div>
     {Object.values(errors).some(Boolean) && <p className="enquiry-error enquiry-form__status" role="alert">Please check the highlighted fields.</p>}

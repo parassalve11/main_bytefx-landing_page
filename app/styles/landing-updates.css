@@ -4,7 +4,6 @@
   [data-theme='light'] img.theme-art--dark { display: none; }
   [data-theme='light'] img.theme-art--light { display: block; }
   .broker-rail { scroll-snap-type: none; scroll-behavior: auto; }
-  .rail-nav .rail-pause { width: auto; min-width: 60px; padding-inline: 12px; border-radius: 999px; font-size: 11px; }
   .ratings-strip__profile { display: flex; align-items: center; gap: 8px; color: var(--accent); font-size: 15px; font-weight: 600; }
   .social--tiktok { color: var(--ink); }
   [data-theme='light'] .t-partner__halo { background: radial-gradient(closest-side, rgb(23 105 201 / 0.35), transparent 72%); }
