@@ -29,7 +29,7 @@ export default async function MarketPage({ params }) {
       <MarketInstruments market={market} />
       <MarketTopics market={market} />
       <MarketPlatforms />
-      <FAQ items={market.faqs} title={`${market.name} trading, explained.`} />
+      <FAQ items={market.faqs} title={`${market.name} trading, explained`} />
       <MarketCta market={market} />
     </main>
   );

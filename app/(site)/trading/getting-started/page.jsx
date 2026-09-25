@@ -17,6 +17,6 @@ export default function GettingStartedPage() {
     <SetupStory />
     <VerificationChecklist />
     <section className="mobile-section inner-color-band"><div className="shell inner-split"><div><p className="eyebrow">There’s room to practise</p><h2 className="h-lg">Not ready<br />for real money?</h2><p className="lede">Start with virtual funds. Demo accounts are opened from the client area, so you can learn the platform and test a routine before choosing a live account.</p><Actions primary={{label:'Open a free demo',href:site.registerUrl}} secondary={{label:'Talk to support',href:'/contact'}} /></div><Image src="/assets/generated/demo.webp" alt="Crystal practice shield with a lime play symbol" width={1100} height={1100} sizes="(max-width: 760px) 85vw, 46vw" /></div></section>
-    <div><ClosingSection title="Start with a plan." accent="Make it yours." lead="Choose your account, prepare the essentials and take the next step at your own pace." primary={{label:'Compare accounts',href:'/trading/account-types'}} secondary={{label:'Funding & withdrawals',href:'/trading/funding'}} /></div>
+    <div><ClosingSection title="Start with a plan" accent="Make it yours" lead="Choose your account, prepare the essentials and take the next step at your own pace." primary={{label:'Compare accounts',href:'/trading/account-types'}} secondary={{label:'Funding & withdrawals',href:'/trading/funding'}} /></div>
   </main>;
 }

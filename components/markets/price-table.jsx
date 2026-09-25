@@ -1,13 +1,25 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import SmartLink from '@/components/smart-link';
 import TvWidget from '@/components/tools/tv-widget';
 import { quoteGroups } from '@/components/tools/tv-config';
+import { flagsFor } from '@/lib/flags';
 
 const EVERY = 15000;
 const fixed = (value, digits) => value.toLocaleString('en-US', { minimumFractionDigits: digits, maximumFractionDigits: digits });
 const signed = (value, digits) => `${value > 0 ? '+' : value < 0 ? '−' : ''}${fixed(Math.abs(value), digits)}`;
+
+/* Decorative: the symbol beside them already names the instrument. */
+function SymbolFlags({ codes }) {
+  if (!codes.length) return null;
+  return (
+    <span className="mk-symbol__flags" data-count={codes.length} aria-hidden="true">
+      {codes.map((code) => <Image key={code} src={`/assets/flags/${code}.svg`} alt="" width={24} height={16} />)}
+    </span>
+  );
+}
 
 /* Live table for a market page. Rows come from /api/quotes and refresh every
    15 seconds while the tab is visible. A price that moves flashes once in
@@ -73,7 +85,12 @@ export default function PriceTable({ market, name, rows, quotes, tradeHref }) {
               const pos = span ? Math.min(1, Math.max(0, (row.price - row.low) / span)) : 0.5;
               return (
                 <tr key={label}>
-                  <th scope="row"><strong>{label}</strong><span>{detail}</span></th>
+                  <th scope="row">
+                    <span className="mk-symbol">
+                      <SymbolFlags codes={flagsFor(market, label)} />
+                      <span className="mk-symbol__name"><strong>{label}</strong><span>{detail}</span></span>
+                    </span>
+                  </th>
                   <td className="mk-price" data-tick={ticks[i]}>{row ? fixed(row.price, digits) : state.status === 'loading' ? <span className="mk-skeleton" aria-label="Loading" /> : <span aria-label="Unavailable">—</span>}</td>
                   <td className="mk-change" data-dir={dir}>
                     {row && row.change !== null ? <><span aria-hidden="true">{dir === 'up' ? '▲' : dir === 'down' ? '▼' : '•'}</span> {signed(row.changePct, 2)}%<small>{signed(row.change, digits)}</small></> : row || state.status !== 'loading' ? '—' : <span className="mk-skeleton mk-skeleton--sm" />}

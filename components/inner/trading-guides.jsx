@@ -13,7 +13,7 @@ export function FundingExplorer() {
   return (
     <section className="band" id="payment-methods">
       <div className="shell">
-        <SectionHead eyebrow="Explore your options" title="Your account." accent="Your way to fund it." body="Find a method, then check the terms in your account before making a payment." />
+        <SectionHead eyebrow="Explore your options" title="Your account." accent="Your way to fund it" body="Find a method, then check the terms in your account before making a payment." />
         <div className="funding-controls">
           <div className="account-selector" role="group" aria-label="Payment direction">
             {['deposit', 'withdrawal'].map(value => <button type="button" key={value} aria-pressed={direction === value} onClick={() => setDirection(value)}>{value === 'deposit' ? 'Deposits' : 'Withdrawals'}</button>)}
@@ -85,7 +85,7 @@ export function SetupStory() {
 export function VerificationChecklist() {
   const [checked, setChecked] = useState([]);
   return <section className="band" id="verification"><div className="shell verification-layout">
-    <div><SectionHead eyebrow="Before you upload" title="A little preparation." accent="A smoother start." body="Get your documents ready before opening the verification flow in your account." /><p className="inner-note">Preparation only. Follow the document instructions in your account. This checklist stays on this page and does not submit or verify documents.</p><p className="verification-count" role="status"><strong>{checked.length.toString().padStart(2, '0')}</strong> / 04 prepared</p></div>
+    <div><SectionHead eyebrow="Before you upload" title="A little preparation." accent="A smoother start" body="Get your documents ready before opening the verification flow in your account." /><p className="inner-note">Preparation only. Follow the document instructions in your account. This checklist stays on this page and does not submit or verify documents.</p><p className="verification-count" role="status"><strong>{checked.length.toString().padStart(2, '0')}</strong> / 04 prepared</p></div>
     <div className="verification-checklist">{verificationItems.map(([id, title, body]) => <label key={id} data-checked={checked.includes(id)}><input type="checkbox" checked={checked.includes(id)} onChange={() => setChecked(current => current.includes(id) ? current.filter(item => item !== id) : [...current, id])} /><span><strong>{title}</strong><span>{body}</span></span></label>)}</div>
   </div></section>;
 }

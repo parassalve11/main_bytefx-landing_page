@@ -5,6 +5,7 @@ import { Breadcrumbs } from '@/components/inner/page-kit';
 import { site } from '@/lib/content';
 import { markets } from '@/lib/pages/markets';
 import { StoreBadge } from '@/components/mobile-section';
+import LeverageStat from './leverage-stat';
 import MarketTabs from './market-tabs';
 import PriceTable from './price-table';
 
@@ -80,7 +81,7 @@ export function MarketSwitch({ current }) {
     <section className="band mk-switch" aria-labelledby="mk-switch-title">
       <div className="shell">
         <p className="eyebrow">Our markets</p>
-        <h2 className="mk-switch__title" id="mk-switch-title">150+ instruments across forex, crypto, stocks, commodities, indices and energy, all on MetaTrader 5.</h2>
+        <h2 className="mk-switch__title" id="mk-switch-title">150+ instruments across forex, crypto, stocks, commodities, indices and energy, all on MetaTrader 5</h2>
         <nav className="mk-switch__nav" aria-label="Markets">
           {markets.map((market) => (
             <SmartLink key={market.id} href={`/markets/${market.id}`} aria-current={market.id === current ? 'page' : undefined}>
@@ -144,7 +145,7 @@ export function MarketPlatforms() {
       <div className="shell">
         <div className="section-head inner-section-head section-head--center mk-platforms__head">
           <p className="eyebrow">Trading platforms</p>
-          <h2 className="h-lg" id="mk-platforms-title">Trade on <span className="tint">any device.</span></h2>
+          <h2 className="h-lg" id="mk-platforms-title">Trade on <span className="tint">any device</span></h2>
           <p className="lede">Your account, funding and the markets in one app. Download it for your phone and pick up where you left off on desktop.</p>
         </div>
         <div className="mk-platforms__stores">
@@ -171,10 +172,7 @@ export function MarketCta({ market }) {
             <SmartLink className="btn btn--ghost" href="/contact">Talk to us</SmartLink>
           </div>
         </div>
-        <div className="mk-cta__stat">
-          <strong>1:2000</strong>
-          <span>Maximum leverage is dependent on market volatility.</span>
-        </div>
+        <LeverageStat note="Maximum leverage is dependent on market volatility." />
       </div>
     </section>
   );

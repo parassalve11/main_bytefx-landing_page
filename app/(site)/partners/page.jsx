@@ -4,7 +4,7 @@ import EnquiryForm from '@/components/inner/enquiry-form';
 import PartnerHeroArt from '@/components/inner/partner-hero-art';
 import { Breadcrumbs, PageSchema, SectionHead, ThemeArt, pageMetadata } from '@/components/inner/page-kit';
 import { documents, site } from '@/lib/content';
-import { partnerBenefits, partnerSteps, partnersPage as page } from '@/lib/pages/partners';
+import { partnerBenefits, partnersPage as page } from '@/lib/pages/partners';
 
 export const metadata = pageMetadata(page);
 const fields = [
@@ -22,7 +22,7 @@ export default function PartnersPage() {
       <div className="partner-hero__grid">
         <Reveal className="partner-hero__copy">
           <p className="eyebrow">{page.eyebrow}</p>
-          <h1 id="partner-title">Grow your income<br /><span className="tint">by referring clients.</span></h1>
+          <h1 id="partner-title">Grow your income<br /><span className="tint">by referring clients</span></h1>
           <p className="lede">{page.description}</p>
           <div className="partner-hero__actions"><SmartLink href={site.registerUrl} className="btn btn--solid">Know More</SmartLink><a href="#become-ib" className="partner-text-link">Want to become an IB? <span aria-hidden="true">↗</span></a></div>
         </Reveal>
@@ -30,7 +30,7 @@ export default function PartnersPage() {
       </div>
     </div></section>
     <section className="band" id="benefits"><div className="shell">
-      <SectionHead eyebrow="Partnership" title="Everything you need" accent="to grow your business." />
+      <SectionHead eyebrow="Partnership" title="Everything you need" accent="to grow your business" />
       <div className="benefit-board">
         <Reveal as="article" className="tile benefit-lead">
           <div><h3 className="eyebrow">High Revenue Share</h3><p className="benefit-lead__figure">Earn up to <strong>40%</strong></p><p className="lede">commission on referred clients’ trading fees.</p></div>
@@ -39,9 +39,6 @@ export default function PartnersPage() {
         </Reveal>
         <div className="benefit-list">{partnerBenefits.map((benefit, i) => <Reveal as="article" key={benefit.title} delay={i * 60} className="benefit-item"><span className="partner-benefit-number" aria-hidden="true">0{i + 2}</span><div><h3 className="h-sm">{benefit.title}</h3><p className="lede">{benefit.body}</p></div></Reveal>)}</div>
       </div>
-    </div></section>
-    <section className="band partner-start" id="how-it-works" aria-label="Start trading in four steps"><div className="shell">
-      <ol className="start-steps">{partnerSteps.map(([name, body], i) => <Reveal as="li" key={name} delay={i * 60}><span className="start-steps__n" aria-hidden="true">0{i + 1}</span><h2 className="h-sm">{name}</h2><p className="lede">{body}</p></Reveal>)}</ol>
     </div></section>
     <section className="band partner-signup" aria-labelledby="partner-signup-title"><Reveal className="shell partner-signup__frame">
       <h2 className="h-lg" id="partner-signup-title">Sign Up for Your Account<br /><span className="tint">Before the Next Move Happens</span></h2>

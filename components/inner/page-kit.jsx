@@ -23,7 +23,7 @@ export function PageHero({ page, children }) {
 export function SectionHead({ eyebrow, title, accent, body, className = '' }) {
   return <div className={`section-head inner-section-head ${className}`.trim()}>{eyebrow && <p className="eyebrow">{eyebrow}</p>}<h2 className="h-lg">{title} {accent && <span className="tint">{accent}</span>}</h2>{body && <p className="lede">{body}</p>}</div>;
 }
-export function FAQ({ items, title = 'A little clarity. Before you start.' }) {
+export function FAQ({ items, title = 'A little clarity. Before you start' }) {
   return <section className="band inner-faq" id="faq"><div className="shell inner-faq__grid"><SectionHead eyebrow="Your questions, answered" title={title} /><div>{items.map(([question, answer]) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p className="lede">{answer}</p></details>)}</div></div></section>;
 }
 export function PageSchema({ page, faqs = [] }) {

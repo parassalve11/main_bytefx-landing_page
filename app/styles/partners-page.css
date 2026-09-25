@@ -29,13 +29,6 @@
   .partner-benefit-number { flex: none; font-size: 12px; letter-spacing: 0.05em; color: var(--accent); padding-top: 5px; }
   .partners-page .benefit-item .h-sm { font-size: 21px; line-height: 1.3; }
   .partners-page .benefit-item .lede { line-height: 1.8; }
-  .partners-page .partner-start { padding-top: 8px; }
-  .partners-page .start-steps { gap: 18px; }
-  .partners-page .start-steps li { display: block; padding: 28px 24px; border: 1px solid var(--line); border-radius: 22px; background: var(--card); }
-  .partners-page .start-steps li::before { content: none; }
-  .partners-page .start-steps__n { border: 0; border-radius: 0; width: auto; height: auto; display: block; font-size: 14px; color: var(--accent); }
-  .partners-page .start-steps .h-sm { font-size: 21px; margin: 30px 0 12px; }
-  .partners-page .start-steps .lede { font-size: 14px; line-height: 1.8; }
   .partner-signup { padding-top: 0; }
   .partner-signup__frame { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: space-between; gap: 36px; padding: 54px; border: 1px solid var(--line); border-radius: 28px; background: radial-gradient(ellipse at 100% 50%, var(--glow), transparent 62%), var(--card); }
   .partner-signup .h-lg { font-size: clamp(29px, 3.1vw, 43px); line-height: 1.18; max-width: 26ch; }
@@ -95,7 +88,6 @@
     .partner-hero__actions { gap: 20px; }
     .partners-page .benefit-lead { min-height: 390px; padding: 28px; }
     .partners-page .benefit-item { padding: 24px; gap: 16px; }
-    .partners-page .start-steps { gap: 14px; }
     .partner-signup__frame { flex-direction: column; align-items: flex-start; padding: 32px 26px; }
     .partner-signup .h-lg { font-size: clamp(28px, 5.2vw, 39px); }
     .partners-page .ib-apply { gap: 26px; }
@@ -103,8 +95,6 @@
   @media (max-width: 560px) {
     .enquiry-form__fields { grid-template-columns: minmax(0, 1fr); }
     .inner-page .enquiry-form :is(input, textarea, select) { font-size: 16px; }
-    .partners-page .start-steps li { padding: 24px; }
-    .partners-page .start-steps .h-sm { margin-top: 18px; }
   }
   @media (prefers-reduced-motion: reduce) {
     .partner-hero-art__object { transform: none; transition: none; }

@@ -61,7 +61,7 @@ export function AccountFinder() {
   return <section className="mobile-section inner-color-band band-invert finder-band" id="find-account" aria-labelledby="finder-title"><div className="shell finder">
     <div className="finder__ask">
       <p className="eyebrow">Find your account</p>
-      <h2 className="h-lg" id="finder-title">Your approach.<br />Your starting point.</h2>
+      <h2 className="h-lg" id="finder-title">Your approach<br />Your starting point</h2>
       <p className="lede">Two quick choices. The account that fits appears beside them.</p>
       {questions.map(([name, label, value, setter, options]) => <fieldset className="finder__question" key={name}>
         <legend>{label}</legend>
@@ -95,9 +95,9 @@ export function AccountFinder() {
   </div></section>;
 }
 const tourScreens = [
-  ['Home', '/assets/mobile/bytefx-account.png', 'Your account, at a glance.', 'Your balance, your accounts and your funding controls. All together, ready when you are.'],
-  ['Trade', '/assets/mobile/bytefx-chart.png', 'Your next move, in focus.', 'Follow the chart, review your order and keep your trading plan close.'],
-  ['Tournaments', '/assets/mobile/tournaments-screen.png', 'Your skill sets the pace.', 'Explore trading tournaments, see the prize pool and find your next challenge.'],
+  ['Home', '/assets/mobile/bytefx-account.png', 'Your account, at a glance', 'Your balance, your accounts and your funding controls. All together, ready when you are.'],
+  ['Trade', '/assets/mobile/bytefx-chart.png', 'Your next move, in focus', 'Follow the chart, review your order and keep your trading plan close.'],
+  ['Tournaments', '/assets/mobile/tournaments-screen.png', 'Your skill sets the pace', 'Explore trading tournaments, see the prize pool and find your next challenge.'],
 ];
 export function AppTour() {
   const [active, setActive] = useState(0);
@@ -118,7 +118,7 @@ export function AppTour() {
     return () => { cancelAnimationFrame(frame); window.removeEventListener('scroll', schedule); window.removeEventListener('resize', schedule); };
   }, []);
   return <section className="band app-scroll-tour" id="app-tour"><div className="shell">
-    <SectionHead eyebrow="Inside the app" title="Less searching." accent="More doing." body="Scroll to explore your trading day, from the first glance to the next challenge." />
+    <SectionHead eyebrow="Inside the app" title="Less searching." accent="More doing" body="Scroll to explore your trading day, from the first glance to the next challenge." />
     <div className="app-scroll-layout">
       <div className="app-scroll-stage">
         <div className="app-scroll-orbit" aria-hidden="true" />
@@ -132,5 +132,5 @@ export function AppTour() {
 }
 export function StoreGallery() {
   const rail = useRef(null);
-  return <section className="band"><div className="shell"><div className="gallery-heading"><SectionHead eyebrow="Made for your everyday" title="Take a closer" accent="look." /><div className="inner-actions"><button type="button" className="btn btn--ghost btn--sm" aria-label="Previous app image" onClick={() => rail.current.scrollBy({left:-320, behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'})}>←</button><button type="button" className="btn btn--ghost btn--sm" aria-label="Next app image" onClick={() => rail.current.scrollBy({left:320, behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'})}>→</button></div></div><div className="store-gallery" ref={rail} tabIndex={0} role="region" aria-label="ByteFX store screenshots">{[1, 2, 3].map(i => <Image key={i} src={`/assets/mobile/store-${i}.webp`} alt={`ByteFX app store preview ${i}`} width={720} height={960} sizes="(max-width: 760px) 75vw, 360px" />)}</div></div></section>;
+  return <section className="band"><div className="shell"><div className="gallery-heading"><SectionHead eyebrow="Made for your everyday" title="Take a closer" accent="look" /><div className="inner-actions"><button type="button" className="btn btn--ghost btn--sm" aria-label="Previous app image" onClick={() => rail.current.scrollBy({left:-320, behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'})}>←</button><button type="button" className="btn btn--ghost btn--sm" aria-label="Next app image" onClick={() => rail.current.scrollBy({left:320, behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'})}>→</button></div></div><div className="store-gallery" ref={rail} tabIndex={0} role="region" aria-label="ByteFX store screenshots">{[1, 2, 3].map(i => <Image key={i} src={`/assets/mobile/store-${i}.webp`} alt={`ByteFX app store preview ${i}`} width={720} height={960} sizes="(max-width: 760px) 75vw, 360px" />)}</div></div></section>;
 }

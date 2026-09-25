@@ -9,9 +9,10 @@ export default function RatingsStrip() {
     <aside className="ratings-strip" aria-label="ByteFX broker profile and ratings">
       <div className="shell ratings-strip__inner">
         <a className="ratings-strip__item ratings-strip__item--wikifx" href={ratings.wikifx.url} target="_blank" rel="noopener noreferrer" title="View ByteFX on WikiFX">
+          {/* WikiFX supply their mark for dark backgrounds, so it keeps the
+              same white wordmark in both themes, on its own dark chip. */}
           <span className="ratings-strip__logo ratings-strip__logo--wikifx">
-            <Image className="theme-art--dark" src="/assets/ratings/wikifx.svg" alt="WikiFX" width={121} height={30} />
-            <Image className="theme-art--light" src="/assets/ratings/wikifx-light.svg" alt="WikiFX" width={121} height={30} />
+            <Image src="/assets/ratings/wikifx.svg" alt="WikiFX" width={121} height={30} />
           </span>
           <span className="ratings-strip__profile">View broker profile</span>
         </a>

@@ -16,12 +16,12 @@ export default function AboutPage() {
     <PageSchema page={page} />
     <PageHero page={page} />
     <section className="band" id="values"><div className="shell">
-      <SectionHead eyebrow="Our values" title="What sets our journey" accent="apart." body="We’re driven by clarity, innovation and a people-first approach: a trading environment where security, support and progress go hand in hand, so every trader can grow with confidence." />
+      <SectionHead eyebrow="Our values" title="What sets our journey" accent="apart" body="We’re driven by clarity, innovation and a people-first approach: a trading environment where security, support and progress go hand in hand, so every trader can grow with confidence." />
       <IconGrid items={values} className="icon-grid--4" />
     </div></section>
     <section className="band" id="who-we-are"><div className="shell inner-split who-we-are">
       <div>
-        <SectionHead eyebrow="Who we are" title="A broker built for" accent="the modern trader." />
+        <SectionHead eyebrow="Who we are" title="A broker built for" accent="the modern trader" />
         <p className="lede">ByteFX Capital Ltd. is a multi-asset broker registered in Saint Lucia. Since 2021 we have built the business around what traders actually ask for: fast, reliable execution on MetaTrader 5, account conditions written down in plain numbers, withdrawals that move quickly, and people who answer when you need them.</p>
         <p className="lede">Today our clients trade forex, crypto, stocks, commodities, indices and energy from a single account — on desktop, web and mobile.</p>
       </div>
@@ -29,14 +29,14 @@ export default function AboutPage() {
     </div></section>
     <MarketFeature src="/assets/hero/hero-market-rain.webp" alt="Global forex and metals instruments beneath streams of market data" eyebrow="Forex, metals and more" title="Every major market" accent="One account" body="Trade XAUUSD, EURUSD, GBPUSD, USDJPY and 150+ instruments from a single account." href="/markets" linkLabel="Explore our markets" position="50% 65%" />
     <section className="band" id="markets"><div className="shell">
-      <SectionHead eyebrow="Markets" title="One platform. Global markets." accent="Endless opportunities." body="Explore curated market hubs with live data and on-demand education to sharpen every trade." />
+      <SectionHead eyebrow="Markets" title="One platform. Global markets." accent="Endless opportunities" body="Explore curated market hubs with live data and on-demand education to sharpen every trade." />
       <div className="market-links">{markets.map((market, i) => <Reveal key={market.id} delay={i * 40}><SmartLink href={`/markets/${market.id}`} className="market-link"><span className="market-icon"><Icon name={market.icon} size={20} /></span><strong>{market.name}</strong><span>{market.title}</span></SmartLink></Reveal>)}</div>
     </div></section>
     <section className="mobile-section inner-color-band" id="community"><div className="shell inner-split telegram-community">
-      <div><p className="eyebrow">ByteFX on Telegram</p><h2 className="h-lg">Market insights, in one place.</h2><p className="lede">Follow the official ByteFX Telegram channel for market updates, technical analysis and company news.</p><ul className="community-topics"><li>Market updates</li><li>Trade ideas</li><li>Technical analysis</li></ul><Actions primary={{ label: 'Join Telegram community', href: site.telegramUrl }} /></div>
+      <div><p className="eyebrow">ByteFX on Telegram</p><h2 className="h-lg">Market insights, in one place</h2><p className="lede">Follow the official ByteFX Telegram channel for market updates, technical analysis and company news.</p><ul className="community-topics"><li>Market updates</li><li>Trade ideas</li><li>Technical analysis</li></ul><Actions primary={{ label: 'Join Telegram community', href: site.telegramUrl }} /></div>
       <div className="telegram-community__visual"><ThemeArt src="/assets/generated/telegram-community.webp" alt="Telegram paper airplane surrounded by glass conversation bubbles" sizes="(max-width: 760px) 80vw, 520px" className="band-art" /><div className="telegram-community__badge"><Icon name="telegram" size={22} /><span><strong>ByteFX community</strong><small>Connect. Share. Stay informed.</small></span><span aria-hidden="true">↗</span></div></div>
     </div></section>
     
-    <ClosingSection title="Trade with a broker" accent="that answers." lead="Open your ByteFX account in minutes, from $20." primary={{ label: 'Open your account', href: site.registerUrl }} secondary={{ label: 'Why ByteFX', href: '/why-bytefx' }} />
+    <ClosingSection title="Trade with a broker" accent="that answers" lead="Open your ByteFX account in minutes, from $20." primary={{ label: 'Open your account', href: site.registerUrl }} secondary={{ label: 'Why ByteFX', href: '/why-bytefx' }} />
   </main>;
 }

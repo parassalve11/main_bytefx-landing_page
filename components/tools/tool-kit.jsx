@@ -33,7 +33,7 @@ export function MoreTools({ current }) {
     <section className="band more-tools" aria-labelledby="more-tools-title">
       <div className="shell">
         <div className="more-tools__head">
-          <h2 className="h-lg" id="more-tools-title">More tools. <span className="tint">Free for every trader.</span></h2>
+          <h2 className="h-lg" id="more-tools-title">More tools. <span className="tint">Free for every trader</span></h2>
           <Actions primary={{ label: 'Open your account', href: site.registerUrl }} secondary={{ label: 'Explore markets', href: '/markets' }} />
         </div>
         <div className="tool-grid tool-grid--3">

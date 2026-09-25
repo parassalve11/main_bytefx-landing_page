@@ -21,6 +21,8 @@
   /* WikiFX wordmark with a compact, clickable caption underneath. */
   .ratings-strip .ratings-strip__item--wikifx { flex-direction: column; gap: 7px; }
   .ratings-strip .ratings-strip__logo--wikifx { padding: 0; background: transparent; border-radius: 0; }
+  /* Light theme: the same white wordmark, on the dark chip it is drawn for. */
+  [data-theme='light'] .ratings-strip .ratings-strip__logo--wikifx { padding: 6px 10px; background: #202020; border-radius: 8px; }
   .ratings-strip .ratings-strip__logo--wikifx img { width: 132px; height: auto; max-height: none; }
   .ratings-strip__profile { color: var(--ink-2); font-size: 11px; line-height: 1.5; text-underline-offset: 3px; }
   .ratings-strip__item--wikifx:hover .ratings-strip__profile { color: var(--accent); text-decoration: underline; }

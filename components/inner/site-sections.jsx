@@ -28,7 +28,7 @@ const startSteps = [
   ['Start trading', 'Open your first position on MetaTrader 5 with professional-grade tools.'],
 ];
 /* The four-step journey from bytefx.com. It is a real sequence, so it is numbered. */
-export function StartSteps({ title = 'Sign up before', accent = 'the next move happens.' }) {
+export function StartSteps({ title = 'Sign up before', accent = 'the next move happens' }) {
   return <section className="band" id="start"><div className="shell"><SectionHead eyebrow="Four steps to your first trade" title={title} accent={accent} /><ol className="start-steps">{startSteps.map(([name, body], i) => <Reveal as="li" key={name} delay={i * 60}><span className="start-steps__n" aria-hidden="true">{i + 1}</span><h3 className="h-sm">{name}</h3><p className="lede">{body}</p></Reveal>)}</ol><div className="inner-actions"><SmartLink href={site.registerUrl} className="btn btn--solid">Open your account<Icon name="arrow" size={16} /></SmartLink><SmartLink href="/trading/getting-started" className="btn btn--ghost">Read the full guide</SmartLink></div></div></section>;
 }
 

@@ -82,8 +82,9 @@ a.mega__link--icon:hover .mega__icon { border-color: currentColor; }
   --plan-frame: #e9eef6;
   --plan-frame-featured: #d5e2f8;
   --plan-feature-shadow: rgb(19 87 188 / 0.32);
-  --plan-glow: rgb(76 211 1 / 0.13);
-  --plan-glow-shadow: rgb(76 211 1 / 0.34);
+  /* No green wash on the light theme's cards — the page is blue here. */
+  --plan-glow: transparent;
+  --plan-glow-shadow: rgb(25 45 80 / 0.16);
   --plan-currency: #3faa00;
   --plan-check: #3faa00;
   --plan-pro-bg: linear-gradient(180deg, #1a5ed0, #1452bd);

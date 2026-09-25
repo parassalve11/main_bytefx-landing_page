@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Mt5Emblem from './mt5-emblem';
+import Reveal from './reveal';
 
 export default function MetaTraderSection() {
   return (
@@ -9,16 +10,16 @@ export default function MetaTraderSection() {
         <Image className="mt5-background--light" src="/assets/platforms/mt5/background-light.webp" alt="" fill sizes="100vw" />
       </div>
       <div className="mt5-showcase">
-        <div className="mt5-copy">
+        <Reveal className="mt5-copy">
           <p className="eyebrow">Advanced trading platform</p>
           <h2 id="mt5-title">MetaTrader <span>5</span></h2>
-          <p className="mt5-headline">Precision in every move.<br />Power behind every strategy.</p>
+          <p className="mt5-headline">Precision in every move<br />Power behind every strategy</p>
           <p className="mt5-lede">
             Take a disciplined approach to global markets with advanced charting,
             flexible order controls and Expert Advisors. Analyse, test and execute
             your strategy in one powerful trading environment.
           </p>
-        </div>
+        </Reveal>
         <Mt5Emblem />
       </div>
     </section>

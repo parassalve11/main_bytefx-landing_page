@@ -26,7 +26,7 @@ export default function AccountTypes() {
     <section className="band" id="account-options"><div className="shell">
       <div className="section-head inner-section-head section-head--center">
         <p className="eyebrow">Three ways to make your move</p>
-        <h2 className="h-lg">Same broker.<br /><span className="tint">Your kind of trading.</span></h2>
+        <h2 className="h-lg">Same broker<br /><span className="tint">Your kind of trading</span></h2>
         <p className="lede">Choose from three account types designed to suit beginners through to professionals — transparent pricing, robust execution and tailored features.</p>
       </div>
       <AccountPlans />
@@ -36,6 +36,6 @@ export default function AccountTypes() {
       <div className="section-head inner-section-head"><h2 className="h-lg">Essentials</h2></div>
       <div className="included-grid">{included.map(([icon, title, body], i) => <Reveal key={title} delay={i * 35}><span className="included-icon"><Icon name={icon} size={18} /></span><h3 className="h-sm">{title}</h3><p className="lede">{body}</p></Reveal>)}</div>
     </div></section>
-    <ClosingSection title="Your next move." accent="Your account." lead="Open an account in minutes and start with as little as $20." primary={{ label: 'Open your account', href: site.registerUrl }} secondary={{ label: 'Contact for a custom plan', href: '/contact' }} />
+    <ClosingSection title="Your next move" accent="Your account" lead="Open an account in minutes and start with as little as $20." primary={{ label: 'Open your account', href: site.registerUrl }} secondary={{ label: 'Contact for a custom plan', href: '/contact' }} />
   </main>;
 }

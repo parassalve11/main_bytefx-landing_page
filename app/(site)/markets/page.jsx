@@ -22,11 +22,11 @@ export default function MarketsPage() {
     <StickySubnav items={sections} />
     <MarketExplorer markets={markets} />
     <section className="band" id="tools"><div className="shell">
-      <SectionHead eyebrow="Trader tools" title="Four tools." accent="Sharper decisions." body="Check a rate, size a position or plan around the week’s events before you place a trade." />
+      <SectionHead eyebrow="Trader tools" title="Four tools." accent="Sharper decisions" body="Check a rate, size a position or plan around the week’s events before you place a trade." />
       <div className="tool-grid">{tools.map((tool) => <SmartLink key={tool.id} className="tool-card" href={tool.path}><span className="icon-card__glyph"><Icon name={tool.icon} size={20} /></span><strong>{tool.name}</strong><span>{tool.note}</span><em>Open tool</em></SmartLink>)}</div>
     </div></section>
     <StartSteps />
-    <FAQ items={marketsFaqs} title="Markets, explained." />
-    <ClosingSection title="Pick a market." accent="Make your move." lead="150+ instruments, six markets, one account." primary={{ label: 'Open your account', href: site.registerUrl }} secondary={{ label: 'Compare accounts', href: '/trading/account-types' }} />
+    <FAQ items={marketsFaqs} title="Markets, explained" />
+    <ClosingSection title="Pick a market" accent="Make your move" lead="150+ instruments, six markets, one account." primary={{ label: 'Open your account', href: site.registerUrl }} secondary={{ label: 'Compare accounts', href: '/trading/account-types' }} />
   </main>;
 }

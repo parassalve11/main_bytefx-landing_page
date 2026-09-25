@@ -20,7 +20,7 @@ export default function PaymentsSection() {
         <Reveal className="payments-layout">
           <div className="payments-story">
             <p className="eyebrow">Deposits &amp; withdrawals</p>
-            <h2 className="h-lg" id="payments-title">Fund your account<br /><span className="tint">your way.</span></h2>
+            <h2 className="h-lg" id="payments-title">Fund your account<br /><span className="tint">your way</span></h2>
             <p className="lede">Cards, digital wallets, bank transfer, UPI or crypto —<br />pick the method that suits you.</p>
             <div className="payment-scene">
               <Image className="payment-scene__wallet theme-art--dark" src="/assets/generated/wallet-payment-methods.webp" alt="A graphite and lime wallet with Visa, Mastercard, Google Pay, Apple Pay, UPI, bank, Bitcoin and USDT coins rising out of it in full colour" width={1100} height={1157} sizes="(max-width: 760px) 86vw, 480px" />
