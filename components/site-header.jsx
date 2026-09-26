@@ -176,6 +176,7 @@ export default function SiteHeader() {
   return (
     <header
       className="masthead"
+      data-home={pathname === '/' ? 'true' : 'false'}
       data-tucked={hidden && !drawer && !openId ? 'true' : 'false'}
       data-compact={compact ? 'true' : 'false'}
       onPointerEnter={(event) => {

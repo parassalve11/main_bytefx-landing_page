@@ -1,0 +1,854 @@
+/* ------------------------------------------------------------------
+   Landing hero — see the header comment in Hero.jsx.
+
+   Colour: every value here is a shade or tint of the brand blue (#1356BE,
+   hue ≈ 216°), plus the brand green on the primary CTA and the cursor
+   meter. The stage is dark in both themes; dark mode only deepens it and
+   moves the accent from ice-blue to green, which is how the rest of the
+   site splits its accents between the two themes.
+   ------------------------------------------------------------------ */
+
+.hero {
+  --hx-nav: 60px;
+  --hx-ticker: 0px;
+  --hx-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --hx-accent: #8fbfff;
+  --hx-copy: rgba(222, 234, 255, 0.8);
+  --hx-hair: rgba(255, 255, 255, 0.2);
+  --hx-glow: rgba(38, 124, 255, 0.55);
+  --hx-silk-opacity: 1;
+
+  /* Written by the pointer handler in Hero.jsx. */
+  --hx-px: 0;
+  --hx-py: 0;
+  --hx-mx: 0px;
+  --hx-my: 0px;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-top: 0;
+  color: #fff;
+  background: #146bd1;
+}
+
+:global(html[data-theme="dark"]) .hero {
+  --hx-accent: #4cd201;
+  --hx-copy: rgba(220, 230, 246, 0.76);
+  --hx-hair: rgba(255, 255, 255, 0.16);
+  --hx-glow: rgba(30, 104, 230, 0.46);
+  --hx-silk-opacity: 0.78;
+  background: #0b52a8;
+}
+
+@media (min-width: 761px) {
+  .hero {
+    --hx-nav: 64px;
+  }
+}
+
+@media (min-width: 981px) {
+  .hero {
+    --hx-nav: 72px;
+  }
+}
+
+/* Backdrop ---------------------------------------------------------- */
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Same bright sky-blue wash as the "Markets In Your Hand" section
+   (MobileTrading.module.css), so the hero and that band read as one family. */
+.base {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 9% -9%, #a2d8ff 0%, transparent 32%),
+    radial-gradient(ellipse at 64% 27%, #83d2ff 0%, transparent 36%),
+    radial-gradient(ellipse at 102% 68%, #76c8ff 0%, transparent 34%),
+    radial-gradient(ellipse at 43% 103%, #54b3ff 0%, transparent 35%),
+    linear-gradient(120deg, #0750a8 0%, #146bd1 47%, #339bfa 78%, #0760c4 100%);
+}
+
+/* The two soft light rings that sweep across the MobileTrading band. */
+.base::before,
+.base::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(16px);
+}
+
+.base::before {
+  width: 110%;
+  height: 35%;
+  left: 18%;
+  bottom: 10%;
+  border-bottom: 28px solid #b6eaff55;
+  transform: rotate(-24deg);
+  box-shadow: 0 24px 35px #65c2ff55;
+}
+
+.base::after {
+  width: 115%;
+  height: 23%;
+  left: -9%;
+  bottom: -15%;
+  border-top: 9px solid #b8ecff80;
+  box-shadow: 0 -14px 35px #a6e5ff55;
+}
+
+:global(html[data-theme="dark"]) .base {
+  background:
+    radial-gradient(ellipse at 9% -9%, #5fa8e8 0%, transparent 32%),
+    radial-gradient(ellipse at 64% 27%, #4a9fe0 0%, transparent 36%),
+    radial-gradient(ellipse at 102% 68%, #3f94d8 0%, transparent 34%),
+    radial-gradient(ellipse at 43% 103%, #2c7fd0 0%, transparent 35%),
+    linear-gradient(120deg, #043a80 0%, #0b52a8 47%, #1f78cf 78%, #04479a 100%);
+}
+
+.silkWrap {
+  position: absolute;
+  inset: -8%;
+  opacity: var(--hx-silk-opacity);
+  transform: translate3d(
+    calc(var(--hx-px) * -26px),
+    calc(var(--hx-py) * -16px),
+    0
+  );
+  will-change: transform;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  will-change: transform;
+}
+
+.far {
+  background-image: url("/assets/hero/silk-far.webp");
+  animation: hxDriftB 17s ease-in-out infinite alternate;
+}
+
+.near {
+  background-image: url("/assets/hero/silk-near.webp");
+  animation: hxDriftA 24s ease-in-out infinite alternate;
+}
+
+.lines {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes hxDriftA {
+  from {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate3d(-34px, 22px, 0) rotate(-1.4deg);
+  }
+}
+
+@keyframes hxDriftB {
+  from {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate3d(42px, -26px, 0) rotate(1.2deg);
+  }
+}
+
+/* The comet: a short bright dash that runs the main streak, then rests. */
+@keyframes hxComet {
+  0% {
+    stroke-dashoffset: 1060;
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  46% {
+    opacity: 1;
+  }
+  52%,
+  100% {
+    stroke-dashoffset: -60;
+    opacity: 0;
+  }
+}
+
+.comet {
+  stroke-dasharray: 60 1000;
+  stroke-dashoffset: 1060;
+  opacity: 0;
+  animation: hxComet 9s cubic-bezier(0.45, 0, 0.3, 1) 1.6s infinite;
+}
+
+/* The light that follows the pointer: one fixed disc, moved by transform
+   rather than a gradient repainted at a new position every frame. */
+.spot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1120px;
+  height: 1120px;
+  margin: -560px 0 0 -560px;
+  border-radius: 50%;
+  opacity: 0;
+  background: radial-gradient(
+    closest-side,
+    rgba(120, 178, 255, 0.2) 0%,
+    rgba(120, 178, 255, 0.07) 55%,
+    rgba(120, 178, 255, 0) 100%
+  );
+  transform: translate3d(var(--hx-mx), var(--hx-my), 0);
+  transition: opacity 0.6s ease;
+  will-change: transform, opacity;
+}
+
+.hero[data-pointer="on"] .spot {
+  opacity: 1;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(4, 50, 120, 0.28) 0%,
+      rgba(4, 50, 120, 0) 18%,
+      rgba(4, 50, 120, 0) 80%,
+      rgba(4, 50, 120, 0.2) 100%
+    ),
+    radial-gradient(120% 90% at 50% 50%, transparent 65%, rgba(4, 40, 100, 0.18) 100%);
+}
+
+/* A whisper of grain so the long gradients do not band. */
+.grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Stage and slides -------------------------------------------------- */
+
+.stage {
+  position: relative;
+  z-index: 1;
+  display: grid;
+}
+
+.slide {
+  --hx-art-h: clamp(300px, 80vw, 460px);
+
+  grid-area: 1 / 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding-top: calc(var(--hx-nav) + 28px);
+  padding-bottom: calc(var(--hx-ticker) + var(--hx-art-h) + 16px);
+  visibility: hidden;
+  transition: visibility 0s linear 0.7s;
+}
+
+.slide[data-active="true"] {
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+@media (min-width: 64rem) {
+  .slide {
+    min-height: clamp(700px, 100svh, 980px);
+    padding-top: calc(var(--hx-nav) + clamp(40px, 7vh, 88px));
+    padding-bottom: calc(var(--hx-ticker) + clamp(40px, 6vh, 72px));
+  }
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.slide[data-active="true"] .glow {
+  opacity: 1;
+  transition: opacity 1.4s ease 0.1s;
+}
+
+.slide[data-layout="right"] .glow {
+  background: radial-gradient(36% 46% at 72% 62%, var(--hx-glow) 0%, transparent 72%);
+}
+
+.slide[data-layout="left"] .glow {
+  background: radial-gradient(42% 42% at 28% 78%, var(--hx-glow) 0%, transparent 72%);
+}
+
+/* Art --------------------------------------------------------------- */
+
+.art {
+  position: absolute;
+  z-index: 1;
+  bottom: -28px;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity 0.45s ease,
+    transform 0.6s ease;
+}
+
+.slide[data-layout="right"] .art {
+  --art-h: calc(var(--hx-art-h) + 72px);
+  --art-from: 56px;
+
+  height: var(--art-h);
+  width: calc(var(--art-h) * 0.819);
+  left: calc(50% - var(--art-h) * 0.4095);
+  transform: translate3d(var(--art-from), 0, 0) scale(0.97);
+
+  /* The cut-out is cropped at its lower left and right edges. Fade those
+     edges into the stage; the upper part (both cards) stays untouched. */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 8%, #000 86%, transparent 100%),
+    linear-gradient(to bottom, #000 0%, #000 55%, transparent 63%);
+  -webkit-mask-composite: source-over;
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 8%, #000 86%, transparent 100%),
+    linear-gradient(to bottom, #000 0%, #000 55%, transparent 63%);
+  mask-composite: add;
+}
+
+.slide[data-layout="left"] .art {
+  --art-w: min(132vw, 820px);
+  --art-from: -56px;
+
+  width: var(--art-w);
+  aspect-ratio: 1558 / 845;
+  left: min(-20px, calc(50% - var(--art-w) * 0.54));
+  transform: translate3d(var(--art-from), 0, 0) scale(0.97);
+}
+
+/* Desktop placement is solved against the copy, not guessed per width.
+
+   Slide 1: `--copy-end` is where the headline stops (measured in Poppins
+   300, "Markets move fast." is 8.6× its font size; 8.8 leaves air). The trader takes the height of the stage, but
+   never more than the room left of that line, and sits as far right as
+   the page margin allows without crossing it.
+
+   Slide 2: the phone may run until it reaches the right-hand column
+   (460px plus the gap), measured from the container. */
+@media (min-width: 64rem) {
+  .slide[data-layout="right"] {
+    --copy-end: calc(
+      (100% - min(100%, 1240px)) / 2 + 20px +
+        min(700px, 8.8 * clamp(56px, 4.9vw, 78px))
+    );
+  }
+
+  .slide[data-layout="right"] .art {
+    --art-w: min(
+      calc((clamp(700px, 100svh, 980px) - var(--hx-nav) - 24px) * 0.819),
+      calc(100% - var(--copy-end) - 12px)
+    );
+
+    width: var(--art-w);
+    height: auto;
+    aspect-ratio: 1122 / 1370;
+    left: max(
+      calc(var(--copy-end) + 12px),
+      calc(
+        100% - var(--art-w) -
+          clamp(0px, (100% - 1240px) / 2 - 60px, 360px)
+      )
+    );
+  }
+
+  .slide[data-layout="left"] .art {
+    --art-w: min(62vw, 1120px, calc((100% + min(100%, 1240px)) / 2 - 472px));
+
+    left: -28px;
+  }
+}
+
+.slide[data-active="true"] .art {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.9s ease 0.15s,
+    transform 1.2s var(--hx-ease) 0.15s;
+}
+
+.tilt {
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 100%;
+  transform: perspective(1600px)
+    translate3d(calc(var(--hx-px) * 14px), calc(var(--hx-py) * 8px), 0)
+    rotateY(calc(var(--hx-px) * 5deg))
+    rotateX(calc(var(--hx-py) * -3deg));
+  will-change: transform;
+}
+
+.artImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: 50% 100%;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Copy -------------------------------------------------------------- */
+
+.frame {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 1;
+  width: min(1240px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(38px, 9.4vw, 60px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.titleLight {
+  display: block;
+  font-weight: 300;
+  color: #fff;
+}
+
+.titleBold {
+  display: block;
+  margin-top: 0.04em;
+  font-weight: 700;
+  color: var(--hx-accent);
+}
+
+.aside {
+  margin-top: 22px;
+}
+
+.lead {
+  margin: 0;
+  max-width: 31rem;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--hx-copy);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.foot {
+  margin-top: 36px;
+}
+
+.stats {
+  display: flex;
+  margin: 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  min-width: 0;
+  padding-inline: clamp(14px, 2.4vw, 32px);
+}
+
+.stat:first-child {
+  padding-left: 0;
+}
+
+.stat + .stat {
+  border-left: 1px solid var(--hx-hair);
+}
+
+.statValue {
+  margin: 0;
+  font-size: clamp(24px, 6.6vw, 34px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--hx-accent);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.statLabel {
+  margin-top: 9px;
+  font-size: 12px;
+  line-height: 1.3;
+  color: var(--hx-copy);
+  white-space: nowrap;
+}
+
+.cursorSlot {
+  margin-top: 28px;
+}
+
+@media (max-width: 29.999rem) {
+  .actions > * {
+    flex: 1 1 100%;
+  }
+}
+
+@media (min-width: 64rem) {
+  .title {
+    font-size: clamp(56px, 4.9vw, 78px);
+  }
+
+  .titleLight,
+  .titleBold {
+    white-space: nowrap;
+  }
+
+  .lead {
+    font-size: 17px;
+  }
+
+  .statValue {
+    font-size: clamp(34px, 3vw, 46px);
+  }
+
+  .statLabel {
+    font-size: 13.5px;
+  }
+
+  .aside {
+    margin-top: 28px;
+  }
+
+  .actions {
+    margin-top: 34px;
+  }
+
+  .foot {
+    margin-top: clamp(40px, 6vh, 64px);
+  }
+
+  /* Slide 1: one column on the left, centred in the stage. */
+  .slide[data-layout="right"] .copy {
+    justify-content: center;
+    max-width: min(700px, 60%);
+  }
+
+  /* Slide 2: the supplied mock — headline top-left over the phone, the
+     lead and CTAs top-right, the figures and cursor bottom-right. */
+  .slide[data-layout="left"] .copy {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
+    grid-template-rows: auto 1fr auto;
+    column-gap: clamp(40px, 6vw, 96px);
+  }
+
+  .slide[data-layout="left"] .title {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .slide[data-layout="left"] .aside {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    margin-top: 0.7em;
+  }
+
+  .slide[data-layout="left"] .foot {
+    grid-column: 2;
+    grid-row: 3;
+    margin-top: 40px;
+  }
+}
+
+/* Slide change ------------------------------------------------------ */
+
+.in {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.slide[data-active="true"] .in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.8s ease calc(var(--d, 0s) + 0.3s),
+    transform 0.9s var(--hx-ease) calc(var(--d, 0s) + 0.3s);
+}
+
+/* First paint: a CSS animation rather than the transition, so the copy is
+   in the HTML and animates in without waiting for JavaScript. */
+@keyframes hxRise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0);
+  }
+}
+
+@keyframes hxArtIn {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--art-from, 48px), 0, 0) scale(0.97);
+  }
+}
+
+.hero[data-intro="true"] .slide[data-active="true"] .in {
+  animation: hxRise 0.9s var(--hx-ease) both;
+  animation-delay: calc(var(--d, 0s) + 0.12s);
+}
+
+.hero[data-intro="true"] .slide[data-active="true"] .art {
+  animation: hxArtIn 1.3s var(--hx-ease) both 0.05s;
+}
+
+/* Cursor ------------------------------------------------------------ */
+
+.cursor {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(3, 18, 60, 0.38);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+}
+
+.dot {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 14px 3px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.dot:hover {
+  color: #fff;
+}
+
+.dot[data-current="true"] {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dot:focus-visible,
+.pause:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  border-radius: 999px;
+}
+
+.dotNum {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.dotLabel {
+  display: none;
+}
+
+@media (min-width: 40rem) {
+  .dotLabel {
+    display: inline;
+  }
+}
+
+.dotTrack {
+  position: absolute;
+  right: 14px;
+  bottom: 7px;
+  left: 14px;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+@keyframes hxFill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.dotFill,
+.dotFillStatic {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #4cd201;
+  transform-origin: left center;
+}
+
+.dotFill {
+  animation-name: hxFill;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.pause {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.72);
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.pause:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.cta {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 14px 24px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.ctaPrimary {
+  background: #ade512;
+  color: #132000;
+  box-shadow: 0 8px 24px rgb(5 35 65 / 0.16);
+}
+
+.ctaPrimary:hover {
+  background: #c2f23c;
+  box-shadow: 0 10px 30px rgb(5 35 65 / 0.25);
+}
+
+.ctaSecondary {
+  background: rgb(4 40 90 / 0.22);
+  border-color: rgb(255 255 255 / 0.45);
+  color: #fff;
+}
+
+.ctaSecondary:hover {
+  background: rgb(4 40 90 / 0.4);
+}
+
+.cta:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+@media (max-width: 760px) {
+  .frame {
+    width: calc(100% - 32px);
+  }
+}
+
+@media (max-width: 359px) {
+  .stat {
+    padding-inline: 10px;
+  }
+
+  .statLabel {
+    font-size: 11px;
+  }
+}
+
+/* Reduced motion ------------------------------------------------------
+   The global kill-switch in globals.css already zeroes durations. These
+   remove the ambient loops outright and pin the art still. */
+@media (prefers-reduced-motion: reduce) {
+  .hero *,
+  .hero *::before,
+  .hero *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .far,
+  .near,
+  .comet {
+    animation: none !important;
+  }
+
+  .comet {
+    display: none;
+  }
+
+  .silkWrap,
+  .tilt {
+    transform: none !important;
+  }
+}

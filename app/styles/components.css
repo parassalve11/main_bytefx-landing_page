@@ -159,6 +159,20 @@
   background: var(--veil);
   -webkit-backdrop-filter: blur(22px) saturate(160%);
   backdrop-filter: blur(22px) saturate(160%);
+  transition: background-color 0.3s ease;
+}
+
+/* A pale glass surface lets the blue hero show through while preserving
+   contrast for the original blue logo. Other routes retain the white bar. */
+.masthead[data-home='true'] {
+  border-bottom-color: rgb(255 255 255 / 0.45);
+}
+.masthead[data-home='true']::before {
+  background: rgb(255 255 255 / 0.76);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.5);
+}
+.masthead[data-home='true'][data-compact='true']::before {
+  background: rgb(255 255 255 / 0.9);
 }
 .masthead[data-tucked='true'] {
   translate: 0 -100%;
