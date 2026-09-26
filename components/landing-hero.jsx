@@ -8,29 +8,25 @@ import { site } from "@/lib/content";
 import styles from "./landing-hero.module.css";
 
 /* ------------------------------------------------------------------
-   Landing hero — two slides on one lit stage.
+   Landing hero — three slides on one plain, bright blue stage.
 
-   Reference: fpmarkets.com. What is borrowed is the structure, not the
-   art: a full-bleed blue stage that never changes, slides that swap only
-   the words and the cut-out on top of it, a split headline (thin line,
-   bold line), large thin figures under hairline dividers, and a progress
-   cursor that shows the next slide coming.
+   The stage never changes; slides swap only the words and the cut-out on
+   top of it. Every slide uses the same type: a two-line bold headline, a
+   lead, CTAs, and three icon-topped figures under hairline dividers.
 
-   Slide 1 puts the art on the right and the copy on the left. Slide 2 is
-   the mirror — the phone bleeds off the bottom-left corner and the copy
-   moves to the right — which is the composition of the supplied mock.
+   Slides 1 (markets) and 2 (rewards) put the art on the right and the
+   copy on the left. Slide 3 is the mirror — the phone bleeds off the
+   bottom-left corner and the copy moves to the right.
 
-   Both slides are always rendered and stacked in one grid cell, so the
+   All slides are always rendered and stacked in one grid cell, so the
    hero is as tall as its tallest slide and never jumps on a change. The
-   inactive slide is `inert` and hidden from assistive tech.
+   inactive slides are `inert` and hidden from assistive tech. Slides
+   change on the timer, the cursor, the side arrows, arrow keys and swipe.
 
-   The pointer drives three things through CSS variables on the section:
-   a soft light that follows it, a slow parallax on the streaks, and a
-   small 3D tilt on the art. Fine pointers only; off under reduced motion.
-   All three are transforms, so moving the mouse never triggers a paint.
-
-   Adapted from the supplied landing-page ZIP. SiteHeader selects its glass
-   surface from the current route; the previous HeroSlot remains available.
+   The pointer drives a soft light that follows it and a small 3D tilt on
+   the art, through CSS variables on the section. Fine pointers only; off
+   under reduced motion. Both are transforms, so moving the mouse never
+   triggers a paint.
    ------------------------------------------------------------------ */
 
 const DWELL_MS = 7000;
@@ -47,16 +43,38 @@ const SLIDES = [
     primary: { label: "Open live account", href: site.liveAccountUrl },
     secondary: { label: "Explore demo", href: site.demoAccountUrl },
     stats: [
-      { value: "1:2000", label: "Leverage up to" },
-      { value: "0.0", label: "Pip spreads from" },
-      { value: "150+", label: "Instruments" },
+      { icon: "line-bolt", value: "1:2000", label: "Leverage up to" },
+      { icon: "line-spread", value: "0.0", label: "Pip spreads from" },
+      { icon: "line-layers", value: "150+", label: "Instruments" },
     ],
     art: {
       src: "/assets/hero/hero-trader.webp",
       width: 1122,
       height: 1370,
-      sizes: "(max-width: 1023px) 80vw, 46vw",
+      sizes: "(max-width: 1023px) 80vw, 50vw",
       alt: "A trader checking live EUR/USD and NAS100 charts on his phone",
+    },
+  },
+  {
+    id: "rewards",
+    label: "Rewards",
+    layout: "right",
+    headingLevel: "h2",
+    light: "Trade. Win. Drive away.",
+    bold: "Rewards worth moving for.",
+    lead: "Join competitions, climb the leaderboard and unlock exclusive prizes designed for active traders.",
+    primary: { label: "Join now", href: "https://tournaments.bytefx.com/" },
+    stats: [
+      { icon: "line-trophy", value: "Top prizes", label: "Exclusive rewards" },
+      { icon: "line-bars", value: "Weekly", label: "Leaderboard updates" },
+      { icon: "line-live", value: "Live", label: "Competition tracking" },
+    ],
+    art: {
+      src: "/assets/hero/hero-rewards-medal.webp",
+      width: 1037,
+      height: 1785,
+      sizes: "(max-width: 1023px) 80vw, 46vw",
+      alt: "A gold first-place medal hanging on a blue ribbon with a car key charm, beside Leaderboards, Exclusive prizes and Real rewards cards",
     },
   },
   {
@@ -70,9 +88,9 @@ const SLIDES = [
     primary: { label: "Open live account", href: site.liveAccountUrl },
     secondary: { label: "Get the app", href: "/trading/mobile-app" },
     stats: [
-      { value: "~20ms", label: "Order execution" },
-      { value: "$20", label: "Minimum deposit" },
-      { value: "24/6", label: "Client support" },
+      { icon: "line-timer", value: "~20ms", label: "Order execution" },
+      { icon: "line-wallet", value: "$20", label: "Minimum deposit" },
+      { icon: "line-support", value: "24/6", label: "Client support" },
     ],
     art: {
       src: "/assets/hero/hero-phone.webp",
@@ -97,61 +115,12 @@ function useMedia(query) {
   );
 }
 
-/* The stage. Everything here is decoration and pointer-events: none.
-
-   The silk is two pre-blurred WebP layers (public/assets/hero/silk-*.webp),
-   not live SVG filters: a 70px Gaussian blur re-rasterised on every frame
-   of a drift is far too expensive, and baked it costs ~110 KB once. Both
-   layers, the parallax and the pointer light only ever change `transform`
-   or `opacity`, so the whole stage moves on the compositor. The one live
-   vector is the hairline and the comet that runs along it. */
+/* The stage: one plain, bright blue wash shared by every slide, lit a
+   little brighter behind the art. Decoration only, pointer-events: none. */
 function Backdrop() {
-  const streak = "M-120 800 C 330 650, 660 700, 990 500 S 1450 150, 1800 110";
-
   return (
     <div className={styles.backdrop} aria-hidden="true">
       <div className={styles.base} />
-
-      <div className={styles.silkWrap}>
-        <div className={`${styles.layer} ${styles.far}`} />
-        <div className={`${styles.layer} ${styles.near}`}>
-          <svg
-            className={styles.lines}
-            viewBox="0 0 1600 900"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
-            <defs>
-              <linearGradient id="hx-line" x1="0" y1="0" x2="1" y2="0">
-                <stop offset=".12" stopColor="#dce9ff" stopOpacity="0" />
-                <stop offset=".55" stopColor="#e6f0ff" stopOpacity=".85" />
-                <stop offset=".88" stopColor="#dce9ff" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-            <path d={streak} fill="none" stroke="url(#hx-line)" strokeWidth="2" />
-            <path
-              className={styles.comet}
-              d={streak}
-              pathLength="1000"
-              fill="none"
-              stroke="#9cc5ff"
-              strokeOpacity=".35"
-              strokeWidth="12"
-              strokeLinecap="round"
-            />
-            <path
-              className={styles.comet}
-              d={streak}
-              pathLength="1000"
-              fill="none"
-              stroke="#f4f8ff"
-              strokeWidth="3.5"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
-      </div>
-
       <div className={styles.spot} />
       <div className={styles.vignette} />
       <div className={styles.grain} />
@@ -241,6 +210,7 @@ function Slide({ slide, index, isActive, renderCursor, onHold }) {
     <div
       className={styles.slide}
       data-layout={slide.layout}
+      data-slide={slide.id}
       data-active={isActive ? "true" : "false"}
       role="group"
       aria-roledescription="slide"
@@ -289,9 +259,11 @@ function Slide({ slide, index, isActive, renderCursor, onHold }) {
                 {slide.primary.label}
                 <Icon name="arrow" size={16} />
               </SmartLink>
-              <SmartLink href={slide.secondary.href} className={`${styles.cta} ${styles.ctaSecondary}`}>
-                {slide.secondary.label}
-              </SmartLink>
+              {slide.secondary ? (
+                <SmartLink href={slide.secondary.href} className={`${styles.cta} ${styles.ctaSecondary}`}>
+                  {slide.secondary.label}
+                </SmartLink>
+              ) : null}
             </div>
           </div>
 
@@ -300,7 +272,10 @@ function Slide({ slide, index, isActive, renderCursor, onHold }) {
               {slide.stats.map((stat) => (
                 <div key={stat.label} className={styles.stat}>
                   <dt className={styles.statLabel}>{stat.label}</dt>
-                  <dd className={`${styles.statValue} tnum`}>{stat.value}</dd>
+                  <dd className={styles.statValue}>
+                    <Icon name={stat.icon} size={30} className={styles.statIcon} />
+                    <span className="tnum">{stat.value}</span>
+                  </dd>
                 </div>
               ))}
             </dl>
@@ -502,6 +477,27 @@ export default function LandingHero() {
           />
         ))}
       </div>
+
+      <button
+        type="button"
+        className={`${styles.arrow} ${styles.arrowPrev}`}
+        aria-label="Previous slide"
+        onClick={() => select((active - 1 + SLIDES.length) % SLIDES.length, true)}
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="m15 5-7 7 7 7" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        className={`${styles.arrow} ${styles.arrowNext}`}
+        aria-label="Next slide"
+        onClick={() => select((active + 1) % SLIDES.length, true)}
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="m9 5 7 7-7 7" />
+        </svg>
+      </button>
     </section>
   );
 }
